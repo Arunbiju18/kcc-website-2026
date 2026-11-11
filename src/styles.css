@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #f5f5ef;
+  background: #101a14;
+  scroll-behavior: smooth;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 8%;
+  border-bottom: 1px solid #ffffff20;
+}
+
+.nav h2 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.nav h2 span { color: #b6ed68; }
+
+.nav a {
+  color: #b6ed68;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hero {
+  min-height: 650px;
+  padding: 130px 10% 100px;
+  background: linear-gradient(120deg, #102b1d, #101a14 75%);
+}
+
+.eyebrow {
+  color: #b6ed68;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.hero h1, .content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: .95;
+}
+
+.hero h1 {
+  font-size: clamp(65px, 11vw, 130px);
+  margin: 25px 0;
+}
+
+.intro {
+  max-width: 480px;
+  color: #c3cec5;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.primary {
+  display: inline-block;
+  background: #b6ed68;
+  color: #102015;
+  padding: 17px 25px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.content {
+  padding: 90px 10%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.content h2 {
+  font-size: clamp(42px, 7vw, 76px);
+  margin: 20px 0;
+}
+
+.content p:not(.eyebrow) {
+  max-width: 650px;
+  color: #c3cec5;
+  line-height: 1.9;
+}
+
+.dark {
+  max-width: none;
+  background: #1b3023;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.content h3 {
+  font-size: 64px;
+  color: #b6ed68;
+  margin: 30px 0 10px;
+}
+
+.content h3 small {
+  font-size: 18px;
+  color: #c3cec5;
+}
+
+footer {
+  padding: 30px 10%;
+  border-top: 1px solid #ffffff20;
+  color: #89978c;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 560px; padding: 110px 7% 80px; }
+  .content { padding: 70px 7%; }
+  .nav { padding: 20px 7%; }
+}
