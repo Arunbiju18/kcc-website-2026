@@ -1,560 +1,1319 @@
 
-import React, { useState } from "react";
-import { createRoot } from "react-dom/client";
-import "./styles.css";
-
-const WHATSAPP_GROUP_LINK =
-  "https://chat.whatsapp.com/FVlr6rMUPeLIjE4H7MYfTx?s=cl&p=a&iam=2";
-
-function App() {
-  const initialForm = {
-    name: "",
-    phone: "",
-    type: "Player",
-    location: "",
-    jersey: "Later",
-    note: "",
-    consent: false,
-    website: ""
-  };
-
-  const [form, setForm] = useState(initialForm);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  const [registrationId, setRegistrationId] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  function update(field, value) {
-    setForm(previous => ({ ...previous, [field]: value }));
-  }
-
-  // EXISTING REGISTRATION LOGIC — PRESERVED
-  async function submitForm(event) {
-    event.preventDefault();
-
-    setMessage("");
-    setRegistrationSuccess(false);
-    setRegistrationId("");
-
-    if (!/^[6-9]\d{9}$/.test(form.phone)) {
-      setMessage("Enter a valid 10-digit Indian mobile number.");
-      return;
-    }
-
-    if (!form.consent) {
-      setMessage("Please agree to the registration terms.");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
-      });
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || "Registration failed.");
-      }
-
-      setRegistrationId(result.registrationId || "");
-      setMessage("Registration submitted successfully!");
-      setRegistrationSuccess(true);
-      setForm(initialForm);
-    } catch (error) {
-      setMessage(error.message || "Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  function closeMenu() {
-    setMenuOpen(false);
-  }
-
-  return (
-    <main className="site-shell">
-
-      {/* NAVIGATION */}
-      <nav className="nav">
-        <a href="#home" className="brand" onClick={closeMenu}>
-          <span className="brand-mark">K</span>
-          <span>
-            <strong>KCC<span className="brand-period">.</span></strong>
-            <small>KUMMALLOOR CRICKET CLUB</small>
-          </span>
-        </a>
-
-        <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
-          <a href="#about" onClick={closeMenu}>ABOUT</a>
-          <a href="#community" onClick={closeMenu}>COMMUNITY</a>
-          <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
-          <a href="#join" onClick={closeMenu} className="mobile-nav-join">
-            JOIN KCC ↗
-          </a>
-        </div>
-
-        <a className="nav-join" href="#join">
-          JOIN KCC <span>↗</span>
-        </a>
-
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(previous => !previous)}
-        >
-          <span />
-          <span />
-        </button>
-      </nav>
-
-      {/* HERO */}
-      <section className="hero" id="home">
-        <div className="hero-noise" />
-        <div className="stadium-scene" aria-hidden="true">
-          <div className="stadium-lights stadium-lights-left" />
-          <div className="stadium-lights stadium-lights-right" />
-          <div className="stadium-stands" />
-          <div className="stadium-field">
-            <div className="field-circle" />
-            <div className="field-pitch">
-              <div className="pitch-crease pitch-crease-top" />
-              <div className="pitch-crease pitch-crease-bottom" />
-              <div className="pitch-stumps" />
-            </div>
-          </div>
-          <div className="stadium-ball" />
-        </div>
-
-        <div className="hero-content">
-          <div className="hero-label">
-            <span className="live-dot" />
-            KUMMALLOOR · KERALA · EST. 2026
-          </div>
-
-          <p className="hero-eyebrow">THE HOME OF LOCAL CRICKET</p>
-
-          <h1>
-            THIS IS<br />
-            <span>OUR GAME.</span>
-          </h1>
-
-          <p className="hero-description">
-            One village. One passion. A community united
-            by the game we love.
-          </p>
-
-          <div className="hero-actions">
-            <a href="#join" className="primary">
-              BECOME A MEMBER <span>↗</span>
-            </a>
-            <a href="#about" className="secondary-link">
-              EXPLORE THE CLUB <span>↓</span>
-            </a>
-          </div>
-        </div>
-
-        <div className="hero-bottom">
-          <span>ONE VILLAGE. ONE COMMUNITY.</span>
-          <span>PLAY · COMPETE · BELONG</span>
-        </div>
-
-        <div className="hero-side-label">KUMMALLOOR CRICKET CLUB</div>
-      </section>
-
-      {/* INTRODUCTION */}
-      <section className="intro-section" id="about">
-        <div className="section-kicker">
-          <span>01</span> WHO WE ARE
-        </div>
-
-        <div className="intro-grid">
-          <div>
-            <p className="intro-overline">BUILT AROUND THE GAME</p>
-            <h2>
-              A CLUB FOR<br />
-              EVERYONE WHO<br />
-              <span>LOVES CRICKET.</span>
-            </h2>
-          </div>
-
-          <div className="intro-copy">
-            <p>
-              Kummalloor Cricket Club brings together people
-              who share one passion — cricket.
-            </p>
-            <p>
-              Whether you want to play, compete, support
-              the team or simply be part of the community,
-              there's a place for you here.
-            </p>
-            <a href="#join" className="text-link">
-              FIND YOUR PLACE AT KCC ↗
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* COMMUNITY */}
-      <section className="community-section" id="community">
-        <div className="section-kicker">
-          <span>02</span> THE KCC COMMUNITY
-        </div>
-
-        <div className="community-heading">
-          <div>
-            <p className="section-overline">MORE THAN A TEAM</p>
-            <h2>MORE THAN<br /><span>JUST MATCHES.</span></h2>
-          </div>
-          <p>
-            Cricket brings us together. The community
-            keeps us connected.
-          </p>
-        </div>
-
-        <div className="benefit-grid">
-          <article className="benefit-card">
-            <span className="benefit-number">01 / PLAY</span>
-            <div className="benefit-icon">🏏</div>
-            <h3>PLAY TOGETHER</h3>
-            <p>
-              Friendly matches, weekend cricket and
-              opportunities to represent the club.
-            </p>
-            <span className="card-arrow">↗</span>
-          </article>
-
-          <article className="benefit-card">
-            <span className="benefit-number">02 / COMPETE</span>
-            <div className="benefit-icon">🏆</div>
-            <h3>COMPETE TOGETHER</h3>
-            <p>
-              Build a competitive team and take part
-              in tournaments.
-            </p>
-            <span className="card-arrow">↗</span>
-          </article>
-
-          <article className="benefit-card">
-            <span className="benefit-number">03 / BELONG</span>
-            <div className="benefit-icon">🤝</div>
-            <h3>GROW TOGETHER</h3>
-            <p>
-              Connect with local players and supporters
-              who share your passion.
-            </p>
-            <span className="card-arrow">↗</span>
-          </article>
-        </div>
-      </section>
-
-      {/* MEMBERSHIP */}
-      <section className="membership-section" id="membership">
-        <div className="section-kicker">
-          <span>03</span> MEMBERSHIP
-        </div>
-
-        <div className="membership-grid">
-          <div className="membership-copy">
-            <p className="membership-tag">YOUR CLUB. YOUR COMMUNITY.</p>
-            <h2>
-              ONE CLUB.<br />
-              <span>ONE HUNDRED.</span>
-            </h2>
-            <p className="membership-description">
-              Membership is open to cricket players
-              and supporters from Kummalloor.
-            </p>
-            <a href="#join" className="text-link">
-              BECOME PART OF KCC ↗
-            </a>
-          </div>
-
-          <div className="price-card">
-            <div className="price-card-top">
-              <p>MONTHLY CONTRIBUTION</p>
-              <span className="price-dot" />
-            </div>
-
-            <div className="price">
-              ₹100 <small>/ month</small>
-            </div>
-
-            <div className="price-divider" />
-
-            <ul>
-              <li><span>✓</span> Join the KCC community</li>
-              <li><span>✓</span> Participate in club activities</li>
-              <li><span>✓</span> Stay informed about matches</li>
-              <li><span>✓</span> Support local cricket</li>
-            </ul>
-
-            <p className="price-note">
-              No joining fee. Jersey is optional and
-              purchased separately.
-            </p>
-
-            <a href="#join" className="primary full-width">
-              JOIN THE CLUB ↗
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW MEMBERSHIP WORKS */}
-      <section className="steps-section">
-        <div className="section-kicker">
-          <span>04</span> GET STARTED
-        </div>
-        <h2>THREE STEPS.<br /><span>ONE COMMUNITY.</span></h2>
-
-        <div className="steps-grid">
-          <div className="step-item">
-            <span>01</span>
-            <h3>REGISTER</h3>
-            <p>Complete the membership registration form.</p>
-          </div>
-          <div className="step-item">
-            <span>02</span>
-            <h3>CONNECT</h3>
-            <p>Join the KCC WhatsApp community.</p>
-          </div>
-          <div className="step-item">
-            <span>03</span>
-            <h3>ACTIVATE</h3>
-            <p>Pay ₹100 monthly and await committee verification.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* REGISTRATION */}
-      <section className="join-section" id="join">
-        <div className="section-kicker">
-          <span>05</span> REGISTRATION
-        </div>
-
-        <div className="join-grid">
-          <div className="join-heading">
-            <p className="section-overline">YOUR NEXT INNINGS STARTS HERE</p>
-            <h2>
-              YOUR<br />
-              <span>CLUB.</span><br />
-              YOUR GAME.
-            </h2>
-            <p>
-              Take the first step. Register with KCC
-              and become part of our cricket community.
-            </p>
-            <div className="join-highlight">
-              <span className="join-highlight-mark">K</span>
-              <div>
-                <strong>KUMMALLOOR CRICKET CLUB</strong>
-                <small>PLAY · COMPETE · BELONG</small>
-              </div>
-            </div>
-          </div>
-
-          <form className="registration-form" onSubmit={submitForm}>
-            <div className="form-heading">
-              <div>
-                <p className="form-overline">TAKE YOUR PLACE</p>
-                <h3>MEMBER REGISTRATION</h3>
-                <p>Fields marked * are required.</p>
-              </div>
-              <span className="form-number">KCC / 2026</span>
-            </div>
-
-            <label htmlFor="name">FULL NAME *</label>
-            <input
-              id="name"
-              required
-              maxLength="80"
-              value={form.name}
-              onChange={e => update("name", e.target.value)}
-              placeholder="Enter your full name"
-            />
-
-            <label htmlFor="phone">WHATSAPP NUMBER *</label>
-            <input
-              id="phone"
-              required
-              type="tel"
-              inputMode="numeric"
-              maxLength="10"
-              value={form.phone}
-              onChange={e =>
-                update("phone", e.target.value.replace(/\D/g, ""))
-              }
-              placeholder="10-digit mobile number"
-            />
-
-            <label htmlFor="type">MEMBERSHIP TYPE *</label>
-            <select
-              id="type"
-              value={form.type}
-              onChange={e => update("type", e.target.value)}
-            >
-              <option value="Player">Player</option>
-              <option value="Supporter">Cricket supporter</option>
-            </select>
-
-            <label htmlFor="location">LOCALITY *</label>
-            <input
-              id="location"
-              required
-              value={form.location}
-              onChange={e => update("location", e.target.value)}
-              placeholder="Your locality"
-            />
-
-            <label htmlFor="jersey">JERSEY PREFERENCE</label>
-            <select
-              id="jersey"
-              value={form.jersey}
-              onChange={e => update("jersey", e.target.value)}
-            >
-              <option value="Yes">Interested now</option>
-              <option value="Later">Maybe later</option>
-              <option value="No">Not interested</option>
-            </select>
-
-            <label htmlFor="note">MESSAGE (OPTIONAL)</label>
-            <textarea
-              id="note"
-              rows="3"
-              maxLength="500"
-              value={form.note}
-              onChange={e => update("note", e.target.value)}
-              placeholder="Anything you want the committee to know?"
-            />
-
-            <label className="consent">
-              <input
-                type="checkbox"
-                checked={form.consent}
-                onChange={e => update("consent", e.target.checked)}
-              />
-              <span>
-                I agree that the club committee may contact
-                me about my registration.
-              </span>
-            </label>
-
-            <div className="honeypot" aria-hidden="true">
-              <label>Leave this field empty</label>
-              <input
-                tabIndex="-1"
-                autoComplete="off"
-                value={form.website}
-                onChange={e => update("website", e.target.value)}
-              />
-            </div>
-
-            <button
-              className="primary submit-button"
-              disabled={loading}
-              type="submit"
-            >
-              {loading ? "SUBMITTING..." : "SUBMIT REGISTRATION ↗"}
-            </button>
-
-            {message && (
-              <p
-                className={`form-message ${registrationSuccess ? "is-success" : "is-error"}`}
-                role="status"
-                aria-live="polite"
-              >
-                {message}
-              </p>
-            )}
-
-            {registrationSuccess && (
-              <div className="whatsapp-invite">
-                <div className="success-icon">✓</div>
-                <p className="form-overline">REGISTRATION RECEIVED</p>
-                <h3>WELCOME TO KCC!</h3>
-                <p>Your registration has been received.</p>
-
-                {registrationId && (
-                  <p className="registration-id">
-                    Registration ID: <strong>{registrationId}</strong>
-                  </p>
-                )}
-
-                <p>
-                  Connect with KCC players and supporters
-                  through our WhatsApp group.
-                </p>
-
-                <a
-                  className="primary full-width"
-                  href={WHATSAPP_GROUP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  JOIN KCC WHATSAPP GROUP ↗
-                </a>
-
-                <p className="form-note">
-                  Your official membership becomes active
-                  only after the committee verifies your
-                  ₹100 monthly contribution.
-                </p>
-              </div>
-            )}
-
-            <p className="form-note">
-              Registration alone does not activate membership.
-              Payment must be received and verified by the committee.
-            </p>
-          </form>
-        </div>
-      </section>
-
-      {/* FINAL CALL TO ACTION */}
-      <section className="closing-section">
-        <p>THE GAME IS BETTER TOGETHER.</p>
-        <h2>SEE YOU<br /><span>ON THE FIELD.</span></h2>
-        <a href="#join" className="primary">
-          JOIN KCC TODAY ↗
-        </a>
-        <div className="closing-decoration">KCC</div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="footer">
-        <div className="footer-top">
-          <a href="#home" className="brand footer-brand">
-            <span className="brand-mark">K</span>
-            <span>
-              <strong>KCC<span className="brand-period">.</span></strong>
-              <small>KUMMALLOOR CRICKET CLUB</small>
-            </span>
-          </a>
-
-          <a
-            href={WHATSAPP_GROUP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WHATSAPP COMMUNITY ↗
-          </a>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© 2026 KUMMALLOOR CRICKET CLUB</span>
-          <a href="#home">BACK TO TOP ↑</a>
-        </div>
-      </footer>
-    </main>
-  );
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #f4f4f0;
+  background: #080b0a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --bg: #080b0a;
+  --panel: #111614;
+  --panel-light: #171e1a;
+  --text: #f4f4f0;
+  --muted: #a0aaa2;
+  --green: #b9f36b;
+  --green-dark: #8fc849;
+  --line: rgba(255,255,255,.11);
 }
 
-createRoot(document.getElementById("root")).render(<App />);
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+}
+
+body, button, input, select, textarea {
+  font-family: 'DM Sans', sans-serif;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+}
+
+.site-shell {
+  overflow: hidden;
+  width: 100%;
+  background: var(--bg);
+}
+
+.nav {
+  position: relative;
+  z-index: 20;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  border-bottom: 1px solid var(--line);
+  background: rgba(8,11,10,.96);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.7px;
+}
+
+.brand-mark {
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #10150d;
+  background: var(--green);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.brand-period {
+  color: var(--green);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.nav-links a {
+  color: #c3cbc4;
+  font-size: 13px;
+  transition: color .2s;
+}
+
+.nav-links a:hover {
+  color: var(--green);
+}
+
+.nav-join,
+.mobile-nav-join {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 43px;
+  padding: 0 20px;
+  border-radius: 7px;
+  color: #11170c;
+  background: var(--green);
+  font-size: 13px;
+  font-weight: 800;
+  transition: background .2s, transform .2s;
+}
+
+.nav-join:hover,
+.mobile-nav-join:hover {
+  background: #d0ff8b;
+  transform: translateY(-2px);
+}
+
+.mobile-nav-join,
+.menu-toggle {
+  display: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 690px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 95px 7% 110px;
+  background: #0a100d;
+  isolation: isolate;
+}
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .2;
+  background-image: radial-gradient(rgba(255,255,255,.17) .7px, transparent .7px);
+  background-size: 5px 5px;
+}
+
+.stadium-scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  opacity: .9;
+  background: linear-gradient(90deg, #0a100d 0%, rgba(10,16,13,.97) 35%, rgba(10,16,13,.3) 100%);
+}
+
+.stadium-lights {
+  position: absolute;
+  top: 55px;
+  width: 190px;
+  height: 190px;
+  opacity: .5;
+  background: radial-gradient(ellipse, rgba(210,255,180,.28), transparent 67%);
+}
+
+.stadium-lights-left {
+  left: 5%;
+}
+
+.stadium-lights-right {
+  right: 5%;
+}
+
+.stadium-stands {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72%;
+  height: 62%;
+  opacity: .6;
+  background: repeating-linear-gradient(0deg, transparent 0 17px, rgba(255,255,255,.08) 18px 19px), linear-gradient(180deg, #202a23, #101914);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 60% 100%, 15% 82%);
+}
+
+.stadium-field {
+  position: absolute;
+  right: -8%;
+  bottom: -30%;
+  width: 85%;
+  height: 65%;
+  border-radius: 50% 50% 0 0;
+  border: 1px solid rgba(185,243,107,.25);
+  background: radial-gradient(ellipse at 50% 0%, rgba(75,125,58,.55), rgba(19,49,29,.7) 52%, #0a130d 78%);
+  transform: perspective(500px) rotateX(20deg);
+}
+
+.field-circle {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  width: 36%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(210,255,180,.22);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.field-pitch {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  width: 15%;
+  height: 70%;
+  border-left: 1px solid rgba(255,255,255,.22);
+  border-right: 1px solid rgba(255,255,255,.22);
+  background: rgba(190,170,115,.08);
+  transform: translateX(-50%);
+}
+
+.pitch-crease {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: rgba(255,255,255,.4);
+}
+
+.pitch-crease-top {
+  top: 12%;
+}
+
+.pitch-crease-bottom {
+  bottom: 12%;
+}
+
+.pitch-stumps {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 20px;
+  height: 42px;
+  border-left: 2px solid #e7e2c9;
+  border-right: 2px solid #e7e2c9;
+  transform: translateX(-50%);
+}
+
+.pitch-stumps::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: 24px;
+  height: 2px;
+  background: #e7e2c9;
+}
+
+.stadium-ball {
+  position: absolute;
+  top: 24%;
+  right: 18%;
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: .75;
+  background: radial-gradient(circle at 32% 28%, #f7b0a0, #a93330 62%, #551d1b);
+  box-shadow: 0 0 70px rgba(255,105,80,.16);
+}
+
+.stadium-ball::after {
+  content: '';
+  position: absolute;
+  inset: 8px 34px;
+  border-left: 2px dashed rgba(255,255,255,.65);
+  border-radius: 50%;
+  transform: rotate(28deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.hero-label,
+.hero-eyebrow,
+.section-kicker,
+.intro-overline,
+.section-overline,
+.form-overline {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  border: 1px solid rgba(185,243,107,.25);
+  border-radius: 30px;
+  background: rgba(185,243,107,.07);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
+
+.hero-eyebrow {
+  margin: 30px 0 12px;
+  color: #c0c8c0;
+  letter-spacing: 3px;
+}
+
+.hero h1,
+.intro-section h2,
+.community-section h2,
+.membership-section h2,
+.steps-section h2,
+.join-heading h2,
+.closing-section h2 {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -2.5px;
+  line-height: 1.04;
+}
+
+.hero h1 {
+  max-width: 760px;
+  font-size: clamp(52px, 7.5vw, 94px);
+}
+
+.hero h1 span {
+  color: var(--green);
+}
+
+.hero-description {
+  max-width: 490px;
+  margin: 25px 0 0;
+  color: #b6c0b8;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 34px;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 25px;
+  border: 0;
+  border-radius: 7px;
+  color: #10160c;
+  background: var(--green);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.primary:hover {
+  background: #d1ff91;
+  transform: translateY(-2px);
+}
+
+.secondary-link,
+.text-link {
+  color: #e0e8df;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color .2s;
+}
+
+.secondary-link:hover,
+.text-link:hover {
+  color: var(--green);
+}
+
+.hero-bottom {
+  position: absolute;
+  right: 7%;
+  bottom: 34px;
+  left: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+
+.hero-side-label {
+  color: #8c998f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.intro-section,
+.community-section,
+.membership-section,
+.steps-section,
+.join-section {
+  padding: 105px 7%;
+}
+
+.intro-section {
+  background: #0c110e;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+  max-width: 1180px;
+  margin: auto;
+}
+
+.intro-section h2,
+.community-section h2,
+.membership-section h2,
+.steps-section h2,
+.join-heading h2 {
+  margin-top: 20px;
+  font-size: clamp(37px, 4.5vw, 58px);
+}
+
+.intro-copy {
+  padding-top: 28px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.intro-copy p {
+  margin: 0 0 20px;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--green);
+}
+
+.community-section {
+  background: var(--bg);
+}
+
+.community-heading {
+  max-width: 720px;
+  margin-bottom: 50px;
+}
+
+.community-section h2 {
+  max-width: 620px;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 1180px;
+  margin: auto;
+}
+
+.benefit-card {
+  position: relative;
+  min-height: 245px;
+  padding: 27px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #151d18, #0e1310);
+  transition: border-color .2s, transform .2s;
+}
+
+.benefit-card:hover {
+  border-color: rgba(185,243,107,.5);
+  transform: translateY(-4px);
+}
+
+.benefit-number {
+  color: #77847a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.benefit-icon {
+  display: block;
+  margin: 24px 0 17px;
+  color: var(--green);
+  font-size: 25px;
+}
+
+.benefit-card h3,
+.step-item h3 {
+  margin: 0 0 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+}
+
+.benefit-card p,
+.step-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.card-arrow {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: #657267;
+}
+
+.membership-section {
+  background: #101712;
+}
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 70px;
+  align-items: center;
+  max-width: 1180px;
+  margin: auto;
+}
+
+.membership-tag {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid rgba(185,243,107,.3);
+  border-radius: 30px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.membership-section h2 {
+  max-width: 580px;
+}
+
+.membership-description {
+  max-width: 520px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.price-card {
+  padding: 33px;
+  border: 1px solid rgba(185,243,107,.3);
+  border-radius: 14px;
+  background: #0b100d;
+  box-shadow: 0 20px 65px rgba(0,0,0,.2);
+}
+
+.price-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price-card-top p {
+  margin: 0;
+  color: #b5c0b7;
+  font-size: 13px;
+}
+
+.price-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.price {
+  margin: 18px 0 5px;
+  color: var(--green);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.price small {
+  color: #9ba69d;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.price-divider {
+  height: 1px;
+  margin: 23px 0;
+  background: var(--line);
+}
+
+.price-card ul {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.price-card li {
+  display: flex;
+  gap: 10px;
+  color: #d8dfd8;
+  font-size: 13px;
+}
+
+.price-card li span {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.price-note {
+  margin: 24px 0 0;
+  color: #849087;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.steps-section {
+  background: #0b100d;
+}
+
+.steps-section > .section-kicker,
+.steps-section > h2 {
+  text-align: center;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  max-width: 1050px;
+  margin: 65px auto 0;
+}
+
+.step-item {
+  position: relative;
+  padding-top: 25px;
+  border-top: 1px solid rgba(185,243,107,.4);
+}
+
+.step-item span {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--green);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.step-item h3 {
+  font-size: 19px;
+}
+
+.join-section {
+  background: #101712;
+}
+
+.join-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 75px;
+  align-items: start;
+  max-width: 1180px;
+  margin: auto;
+}
+
+.join-heading {
+  position: sticky;
+  top: 35px;
+}
+
+.join-heading h2 {
+  max-width: 480px;
+}
+
+.join-heading > p {
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.join-highlight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 35px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.025);
+}
+
+.join-highlight-mark {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 9px;
+  color: #11170c;
+  background: var(--green);
+  font-weight: 900;
+}
+
+.join-highlight strong,
+.join-highlight small {
+  display: block;
+}
+
+.join-highlight strong {
+  font-size: 13px;
+}
+
+.join-highlight small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.registration-form {
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #0b100d;
+}
+
+.form-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 27px;
+}
+
+.form-heading h3 {
+  margin: 9px 0 5px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 25px;
+}
+
+.form-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.form-overline {
+  font-size: 9px;
+}
+
+.form-number {
+  color: #6f7b71;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+}
+
+.registration-form label {
+  display: block;
+  margin-bottom: 17px;
+  color: #dce3dc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border: 1px solid #303b33;
+  border-radius: 7px;
+  outline: none;
+  color: var(--text);
+  background: #121a15;
+  font-size: 13px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.registration-form input:focus,
+.registration-form select:focus,
+.registration-form textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(185,243,107,.1);
+}
+
+.registration-form input::placeholder,
+.registration-form textarea::placeholder {
+  color: #718076;
+}
+
+.registration-form select {
+  color-scheme: dark;
+}
+
+.registration-form textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+.consent {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+  color: #aeb9b0 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.6;
+}
+
+.registration-form .consent input {
+  flex: 0 0 16px;
+  width: 16px;
+  min-height: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: var(--green);
+}
+
+.honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.submit-button {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 7px;
+  color: #11170c;
+  background: var(--green);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s, opacity .2s;
+}
+
+.submit-button:hover {
+  background: #d1ff91;
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.form-message {
+  margin: 16px 0 0;
+  padding: 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.form-message.is-success {
+  border: 1px solid rgba(185,243,107,.3);
+  color: #d8f6b8;
+  background: rgba(185,243,107,.08);
+}
+
+.form-message.is-error {
+  border: 1px solid rgba(255,110,110,.3);
+  color: #ffb4b4;
+  background: rgba(255,90,90,.07);
+}
+
+.form-note {
+  margin: 14px 0 0;
+  color: #7e8b81;
+  font-size: 10px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.whatsapp-invite {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid rgba(83,208,126,.25);
+  border-radius: 10px;
+  background: rgba(35,150,80,.08);
+}
+
+.success-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  color: #0d1b10;
+  background: var(--green);
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.whatsapp-invite h3 {
+  margin: 14px 0 7px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+}
+
+.whatsapp-invite p {
+  color: #aeb9b0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.registration-id {
+  display: inline-block;
+  padding: 8px 11px;
+  border: 1px dashed rgba(185,243,107,.35);
+  border-radius: 5px;
+  color: var(--green);
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.closing-section {
+  position: relative;
+  overflow: hidden;
+  padding: 95px 7%;
+  text-align: center;
+  background: #0a100d;
+}
+
+.closing-section > p {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.closing-section h2 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(42px, 6vw, 72px);
+}
+
+.closing-decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(185,243,107,.08);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closing-decoration::before,
+.closing-decoration::after {
+  content: '';
+  position: absolute;
+  inset: 35px;
+  border: 1px solid rgba(185,243,107,.07);
+  border-radius: 50%;
+}
+
+.closing-decoration::after {
+  inset: 75px;
+}
+
+.footer {
+  padding: 35px 7% 22px;
+  border-top: 1px solid var(--line);
+  background: #080b0a;
+}
+
+.footer-top,
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.footer-bottom {
+  margin-top: 27px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: #7d897f;
+  font-size: 10px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    padding: 0 5%;
+  }
+
+  .hero,
+  .intro-section,
+  .community-section,
+  .membership-section,
+  .steps-section,
+  .join-section {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .intro-grid,
+  .membership-grid,
+  .join-grid {
+    gap: 40px;
+  }
+
+  .benefit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 9vw, 78px);
+  }
+}
+
+@media (max-width: 650px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  .nav {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nav-join {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: #111813;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 69px;
+    right: 0;
+    left: 0;
+    display: none;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 20px 20px;
+    border-bottom: 1px solid var(--line);
+    background: #0b100d;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+
+  .mobile-nav-join {
+    display: inline-flex;
+    margin-top: 15px;
+  }
+
+  .hero {
+    min-height: 690px;
+    align-items: flex-start;
+    padding: 95px 22px 115px;
+  }
+
+  .stadium-scene {
+    opacity: .5;
+    background: linear-gradient(90deg, rgba(10,16,13,.98), rgba(10,16,13,.55));
+  }
+
+  .stadium-stands {
+    right: -35%;
+    width: 120%;
+  }
+
+  .stadium-field {
+    right: -40%;
+    width: 145%;
+  }
+
+  .stadium-ball {
+    top: 55%;
+    right: 10%;
+    width: 48px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 13vw, 67px);
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    max-width: 390px;
+    font-size: 14px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-bottom {
+    right: 22px;
+    left: 22px;
+    bottom: 25px;
+  }
+
+  .hero-side-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .intro-section,
+  .community-section,
+  .membership-section,
+  .steps-section,
+  .join-section {
+    padding: 75px 22px;
+  }
+
+  .intro-grid,
+  .membership-grid,
+  .join-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .intro-section h2,
+  .community-section h2,
+  .membership-section h2,
+  .steps-section h2,
+  .join-heading h2 {
+    font-size: 42px;
+    letter-spacing: -1.8px;
+  }
+
+  .intro-copy {
+    padding-top: 0;
+  }
+
+  .community-heading {
+    margin-bottom: 32px;
+  }
+
+  .benefit-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .benefit-card {
+    min-height: 210px;
+  }
+
+  .membership-grid {
+    gap: 35px;
+  }
+
+  .price-card {
+    padding: 25px;
+  }
+
+  .price {
+    font-size: 58px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 45px;
+  }
+
+  .step-item {
+    padding-top: 18px;
+  }
+
+  .join-heading {
+    position: static;
+  }
+
+  .registration-form {
+    padding: 22px 18px;
+  }
+
+  .form-heading h3 {
+    font-size: 22px;
+  }
+
+  .closing-section {
+    padding: 75px 20px;
+  }
+
+  .closing-section h2 {
+    font-size: 46px;
+    letter-spacing: -2px;
+  }
+
+  .closing-decoration {
+    width: 290px;
+    height: 290px;
+  }
+
+  .footer {
+    padding: 28px 22px 18px;
+  }
+
+  .footer-top,
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    gap: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
