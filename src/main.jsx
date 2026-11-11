@@ -1,8 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
 function App() {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    type: "Player",
+    location: "",
+    jersey: "Later",
+    note: "",
+    consent: false,
+    website: ""
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  function update(field, value) {
+    setForm(previous => ({ ...previous, [field]: value }));
+  }
+
+  async function submitForm(event) {
+    event.preventDefault();
+    setMessage("");
+
+    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      setMessage("Enter a valid 10-digit Indian mobile number.");
+      return;
+    }
+
+    if (!form.consent) {
+      setMessage("Please agree to the membership registration terms.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Registration failed.");
+      }
+
+      setMessage(
+        `Registration submitted successfully! Your ID: ${result.registrationId || "Please wait for committee confirmation."}`
+      );
+
+      setForm({
+        name: "",
+        phone: "",
+        type: "Player",
+        location: "",
+        jersey: "Later",
+        note: "",
+        consent: false,
+        website: ""
+      });
+    } catch (error) {
+      setMessage(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <main>
       <nav className="nav">
@@ -22,21 +90,114 @@ function App() {
       <section className="content">
         <p className="eyebrow">OUR COMMUNITY</p>
         <h2>Cricket brings us together.</h2>
-        <p>Players and supporters are welcome. Join friendly matches, support our team and help build cricket in Kummalloor.</p>
+        <p>
+          Players and supporters are welcome. Join friendly matches,
+          support our team and help build cricket in Kummalloor.
+        </p>
       </section>
 
       <section className="content dark">
         <p className="eyebrow">MEMBERSHIP</p>
         <h2>Simple. Affordable. Local.</h2>
         <h3>₹100 <small>/ month</small></h3>
-        <p>No joining fee. Jersey is optional and can be purchased separately.</p>
+        <p>
+          No joining fee. Jersey is optional and can be purchased
+          separately when available.
+        </p>
       </section>
 
       <section className="content" id="join">
         <p className="eyebrow">JOIN KCC</p>
         <h2>Be part of the team.</h2>
-        <p>Registration is subject to committee review. Submitting the form does not automatically make you a member.</p>
-        <a className="primary" href="https://wa.me/" target="_blank" rel="noreferrer">CONTACT THE CLUB</a>
+        <p>
+          Complete the registration form. The club committee will
+          review your application and contact you.
+        </p>
+
+        <form className="registration-form" onSubmit={submitForm}>
+          <label>Full name</label>
+          <input
+            required
+            value={form.name}
+            onChange={e => update("name", e.target.value)}
+            placeholder="Your full name"
+          />
+
+          <label>WhatsApp number</label>
+          <input
+            required
+            inputMode="numeric"
+            maxLength="10"
+            value={form.phone}
+            onChange={e => update("phone", e.target.value.replace(/\D/g, ""))}
+            placeholder="10-digit mobile number"
+          />
+
+          <label>Membership type</label>
+          <select
+            value={form.type}
+            onChange={e => update("type", e.target.value)}
+          >
+            <option value="Player">Player</option>
+            <option value="Supporter">Cricket supporter</option>
+          </select>
+
+          <label>Locality</label>
+          <input
+            required
+            value={form.location}
+            onChange={e => update("location", e.target.value)}
+            placeholder="Your locality in or around Kummalloor"
+          />
+
+          <label>Jersey preference</label>
+          <select
+            value={form.jersey}
+            onChange={e => update("jersey", e.target.value)}
+          >
+            <option value="Yes">Interested now</option>
+            <option value="Later">Maybe later</option>
+            <option value="No">Not interested</option>
+          </select>
+
+          <label>Message (optional)</label>
+          <textarea
+            rows="3"
+            value={form.note}
+            onChange={e => update("note", e.target.value)}
+            placeholder="Anything you want the committee to know?"
+          />
+
+          <label className="consent">
+            <input
+              type="checkbox"
+              checked={form.consent}
+              onChange={e => update("consent", e.target.checked)}
+            />
+            I agree that the club committee may contact me about my registration.
+          </label>
+
+          <div className="honeypot" aria-hidden="true">
+            <label>Leave this field empty</label>
+            <input
+              tabIndex="-1"
+              autoComplete="off"
+              value={form.website}
+              onChange={e => update("website", e.target.value)}
+            />
+          </div>
+
+          <button className="primary submit-button" disabled={loading}>
+            {loading ? "SUBMITTING..." : "SUBMIT REGISTRATION ↗"}
+          </button>
+
+          {message && <p className="form-message" role="status">{message}</p>}
+        </form>
+
+        <p className="form-note">
+          Submitting this form does not automatically make you a member.
+          Membership is confirmed after committee approval.
+        </p>
       </section>
 
       <footer>KUMMALLOOR CRICKET CLUB © 2026</footer>
