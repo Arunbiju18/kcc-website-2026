@@ -23,11 +23,13 @@ function App() {
   const [message, setMessage] = useState("");
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [registrationId, setRegistrationId] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function update(field, value) {
     setForm(previous => ({ ...previous, [field]: value }));
   }
 
+  // EXISTING REGISTRATION LOGIC — PRESERVED
   async function submitForm(event) {
     event.preventDefault();
 
@@ -71,39 +73,73 @@ function App() {
     }
   }
 
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
   return (
     <main className="site-shell">
 
       {/* NAVIGATION */}
       <nav className="nav">
-        <a href="#home" className="brand">
+        <a href="#home" className="brand" onClick={closeMenu}>
           <span className="brand-mark">K</span>
           <span>
-            <strong>KCC</strong>
+            <strong>KCC<span className="brand-period">.</span></strong>
             <small>KUMMALLOOR CRICKET CLUB</small>
           </span>
         </a>
 
-        <div className="nav-links">
-          <a href="#about">ABOUT</a>
-          <a href="#membership">MEMBERSHIP</a>
-          <a href="#community">COMMUNITY</a>
+        <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
+          <a href="#about" onClick={closeMenu}>ABOUT</a>
+          <a href="#community" onClick={closeMenu}>COMMUNITY</a>
+          <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
+          <a href="#join" onClick={closeMenu} className="mobile-nav-join">
+            JOIN KCC ↗
+          </a>
         </div>
 
         <a className="nav-join" href="#join">
           JOIN KCC <span>↗</span>
         </a>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(previous => !previous)}
+        >
+          <span />
+          <span />
+        </button>
       </nav>
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-overlay" />
+        <div className="hero-noise" />
+        <div className="stadium-scene" aria-hidden="true">
+          <div className="stadium-lights stadium-lights-left" />
+          <div className="stadium-lights stadium-lights-right" />
+          <div className="stadium-stands" />
+          <div className="stadium-field">
+            <div className="field-circle" />
+            <div className="field-pitch">
+              <div className="pitch-crease pitch-crease-top" />
+              <div className="pitch-crease pitch-crease-bottom" />
+              <div className="pitch-stumps" />
+            </div>
+          </div>
+          <div className="stadium-ball" />
+        </div>
 
         <div className="hero-content">
           <div className="hero-label">
             <span className="live-dot" />
-            KUMMALLOOR • EST. 2026
+            KUMMALLOOR · KERALA · EST. 2026
           </div>
+
+          <p className="hero-eyebrow">THE HOME OF LOCAL CRICKET</p>
 
           <h1>
             THIS IS<br />
@@ -111,8 +147,8 @@ function App() {
           </h1>
 
           <p className="hero-description">
-            More than a cricket team. A community built
-            around the game we love.
+            One village. One passion. A community united
+            by the game we love.
           </p>
 
           <div className="hero-actions">
@@ -120,15 +156,17 @@ function App() {
               BECOME A MEMBER <span>↗</span>
             </a>
             <a href="#about" className="secondary-link">
-              DISCOVER KCC ↓
+              EXPLORE THE CLUB <span>↓</span>
             </a>
           </div>
-
-          <div className="hero-bottom">
-            <span>ONE VILLAGE. ONE COMMUNITY.</span>
-            <span>KERALA, INDIA</span>
-          </div>
         </div>
+
+        <div className="hero-bottom">
+          <span>ONE VILLAGE. ONE COMMUNITY.</span>
+          <span>PLAY · COMPETE · BELONG</span>
+        </div>
+
+        <div className="hero-side-label">KUMMALLOOR CRICKET CLUB</div>
       </section>
 
       {/* INTRODUCTION */}
@@ -138,24 +176,25 @@ function App() {
         </div>
 
         <div className="intro-grid">
-          <h2>
-            A CLUB FOR<br />
-            EVERYONE WHO<br />
-            <span>LOVES CRICKET.</span>
-          </h2>
+          <div>
+            <p className="intro-overline">BUILT AROUND THE GAME</p>
+            <h2>
+              A CLUB FOR<br />
+              EVERYONE WHO<br />
+              <span>LOVES CRICKET.</span>
+            </h2>
+          </div>
 
           <div className="intro-copy">
             <p>
               Kummalloor Cricket Club brings together people
               who share one passion — cricket.
             </p>
-
             <p>
               Whether you want to play, compete, support
               the team or simply be part of the community,
               there's a place for you here.
             </p>
-
             <a href="#join" className="text-link">
               FIND YOUR PLACE AT KCC ↗
             </a>
@@ -169,37 +208,49 @@ function App() {
           <span>02</span> THE KCC COMMUNITY
         </div>
 
-        <h2>MORE THAN<br />JUST MATCHES.</h2>
+        <div className="community-heading">
+          <div>
+            <p className="section-overline">MORE THAN A TEAM</p>
+            <h2>MORE THAN<br /><span>JUST MATCHES.</span></h2>
+          </div>
+          <p>
+            Cricket brings us together. The community
+            keeps us connected.
+          </p>
+        </div>
 
         <div className="benefit-grid">
           <article className="benefit-card">
-            <span className="benefit-number">01</span>
+            <span className="benefit-number">01 / PLAY</span>
             <div className="benefit-icon">🏏</div>
             <h3>PLAY TOGETHER</h3>
             <p>
               Friendly matches, weekend cricket and
               opportunities to represent the club.
             </p>
+            <span className="card-arrow">↗</span>
           </article>
 
           <article className="benefit-card">
-            <span className="benefit-number">02</span>
+            <span className="benefit-number">02 / COMPETE</span>
             <div className="benefit-icon">🏆</div>
             <h3>COMPETE TOGETHER</h3>
             <p>
               Build a competitive team and take part
               in tournaments.
             </p>
+            <span className="card-arrow">↗</span>
           </article>
 
           <article className="benefit-card">
-            <span className="benefit-number">03</span>
+            <span className="benefit-number">03 / BELONG</span>
             <div className="benefit-icon">🤝</div>
             <h3>GROW TOGETHER</h3>
             <p>
               Connect with local players and supporters
               who share your passion.
             </p>
+            <span className="card-arrow">↗</span>
           </article>
         </div>
       </section>
@@ -207,11 +258,11 @@ function App() {
       {/* MEMBERSHIP */}
       <section className="membership-section" id="membership">
         <div className="section-kicker">
-          <span>03</span> BECOME A MEMBER
+          <span>03</span> MEMBERSHIP
         </div>
 
         <div className="membership-grid">
-          <div>
+          <div className="membership-copy">
             <p className="membership-tag">YOUR CLUB. YOUR COMMUNITY.</p>
             <h2>
               ONE CLUB.<br />
@@ -221,10 +272,17 @@ function App() {
               Membership is open to cricket players
               and supporters from Kummalloor.
             </p>
+            <a href="#join" className="text-link">
+              BECOME PART OF KCC ↗
+            </a>
           </div>
 
           <div className="price-card">
-            <p>MONTHLY CONTRIBUTION</p>
+            <div className="price-card-top">
+              <p>MONTHLY CONTRIBUTION</p>
+              <span className="price-dot" />
+            </div>
+
             <div className="price">
               ₹100 <small>/ month</small>
             </div>
@@ -232,10 +290,10 @@ function App() {
             <div className="price-divider" />
 
             <ul>
-              <li>✓ Join the KCC community</li>
-              <li>✓ Participate in club activities</li>
-              <li>✓ Stay informed about matches</li>
-              <li>✓ Support local cricket</li>
+              <li><span>✓</span> Join the KCC community</li>
+              <li><span>✓</span> Participate in club activities</li>
+              <li><span>✓</span> Stay informed about matches</li>
+              <li><span>✓</span> Support local cricket</li>
             </ul>
 
             <p className="price-note">
@@ -250,39 +308,67 @@ function App() {
         </div>
       </section>
 
+      {/* HOW MEMBERSHIP WORKS */}
+      <section className="steps-section">
+        <div className="section-kicker">
+          <span>04</span> GET STARTED
+        </div>
+        <h2>THREE STEPS.<br /><span>ONE COMMUNITY.</span></h2>
+
+        <div className="steps-grid">
+          <div className="step-item">
+            <span>01</span>
+            <h3>REGISTER</h3>
+            <p>Complete the membership registration form.</p>
+          </div>
+          <div className="step-item">
+            <span>02</span>
+            <h3>CONNECT</h3>
+            <p>Join the KCC WhatsApp community.</p>
+          </div>
+          <div className="step-item">
+            <span>03</span>
+            <h3>ACTIVATE</h3>
+            <p>Pay ₹100 monthly and await committee verification.</p>
+          </div>
+        </div>
+      </section>
+
       {/* REGISTRATION */}
       <section className="join-section" id="join">
         <div className="section-kicker">
-          <span>04</span> REGISTRATION
+          <span>05</span> REGISTRATION
         </div>
 
         <div className="join-grid">
           <div className="join-heading">
+            <p className="section-overline">YOUR NEXT INNINGS STARTS HERE</p>
             <h2>
               YOUR<br />
               <span>CLUB.</span><br />
               YOUR GAME.
             </h2>
-
             <p>
               Take the first step. Register with KCC
               and become part of our cricket community.
             </p>
-
-            <div className="join-info">
-              <span>01</span>
-              <p>Complete the registration form.</p>
-              <span>02</span>
-              <p>Join the WhatsApp community.</p>
-              <span>03</span>
-              <p>Pay ₹100 monthly and await verification.</p>
+            <div className="join-highlight">
+              <span className="join-highlight-mark">K</span>
+              <div>
+                <strong>KUMMALLOOR CRICKET CLUB</strong>
+                <small>PLAY · COMPETE · BELONG</small>
+              </div>
             </div>
           </div>
 
           <form className="registration-form" onSubmit={submitForm}>
             <div className="form-heading">
-              <h3>MEMBER REGISTRATION</h3>
-              <p>Fields marked * are required.</p>
+              <div>
+                <p className="form-overline">TAKE YOUR PLACE</p>
+                <h3>MEMBER REGISTRATION</h3>
+                <p>Fields marked * are required.</p>
+              </div>
+              <span className="form-number">KCC / 2026</span>
             </div>
 
             <label htmlFor="name">FULL NAME *</label>
@@ -380,7 +466,11 @@ function App() {
             </button>
 
             {message && (
-              <p className="form-message" role="status">
+              <p
+                className={`form-message ${registrationSuccess ? "is-success" : "is-error"}`}
+                role="status"
+                aria-live="polite"
+              >
                 {message}
               </p>
             )}
@@ -388,6 +478,7 @@ function App() {
             {registrationSuccess && (
               <div className="whatsapp-invite">
                 <div className="success-icon">✓</div>
+                <p className="form-overline">REGISTRATION RECEIVED</p>
                 <h3>WELCOME TO KCC!</h3>
                 <p>Your registration has been received.</p>
 
@@ -434,6 +525,7 @@ function App() {
         <a href="#join" className="primary">
           JOIN KCC TODAY ↗
         </a>
+        <div className="closing-decoration">KCC</div>
       </section>
 
       {/* FOOTER */}
@@ -442,7 +534,7 @@ function App() {
           <a href="#home" className="brand footer-brand">
             <span className="brand-mark">K</span>
             <span>
-              <strong>KCC</strong>
+              <strong>KCC<span className="brand-period">.</span></strong>
               <small>KUMMALLOOR CRICKET CLUB</small>
             </span>
           </a>
