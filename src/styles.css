@@ -1317,3 +1317,166 @@ button {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* =================================
+   KCC PREMIUM ANIMATION LAYER
+================================= */
+
+/* Stadium atmosphere */
+.stadium-lights {
+  animation: lightPulse 5s ease-in-out infinite alternate;
+}
+
+.stadium-lights-right {
+  animation-delay: 2.5s;
+}
+
+@keyframes lightPulse {
+  from {
+    opacity: .25;
+    transform: scale(.85);
+  }
+  to {
+    opacity: .75;
+    transform: scale(1.2);
+  }
+}
+
+/* Cricket ball movement */
+.stadium-ball {
+  animation: ballFloat 5s ease-in-out infinite;
+}
+
+@keyframes ballFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-28px, 18px) rotate(160deg);
+  }
+}
+
+/* Hero entrance */
+.hero-label,
+.hero-eyebrow,
+.hero h1,
+.hero-description,
+.hero-actions {
+  animation: heroReveal .8s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.hero-label { animation-delay: .1s; }
+.hero-eyebrow { animation-delay: .2s; }
+.hero h1 { animation-delay: .3s; }
+.hero-description { animation-delay: .45s; }
+.hero-actions { animation-delay: .6s; }
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card hover interactions */
+.benefit-card {
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(0,0,0,.28);
+}
+
+/* Buttons */
+.primary,
+.nav-join,
+.mobile-nav-join,
+.submit-button {
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease,
+    background .25s ease;
+}
+
+.primary:hover,
+.nav-join:hover,
+.mobile-nav-join:hover,
+.submit-button:hover:not(:disabled) {
+  box-shadow: 0 8px 28px rgba(185,243,107,.2);
+}
+
+/* Section reveal - supported browsers */
+@supports (animation-timeline: view()) {
+  .intro-grid,
+  .community-heading,
+  .benefit-card,
+  .membership-grid,
+  .step-item,
+  .join-grid,
+  .closing-section h2 {
+    animation: sectionReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 85%;
+  }
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger the benefit cards */
+.benefit-card:nth-child(2) {
+  animation-delay: .08s;
+}
+
+.benefit-card:nth-child(3) {
+  animation-delay: .16s;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+  .stadium-ball {
+    animation-duration: 6s;
+  }
+
+  .benefit-card:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .stadium-ball,
+  .stadium-lights,
+  .hero-label,
+  .hero-eyebrow,
+  .hero h1,
+  .hero-description,
+  .hero-actions,
+  .intro-grid,
+  .community-heading,
+  .benefit-card,
+  .membership-grid,
+  .step-item,
+  .join-grid,
+  .closing-section h2 {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
