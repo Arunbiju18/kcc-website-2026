@@ -84,10 +84,10 @@ function App() {
       <nav className="nav">
         <a href="#home" className="brand" onClick={closeMenu}>
           <img
-  src="/kcc-logo.png"
-  alt="KCC Logo"
-  className="brand-logo"
-/>
+            src="/kcc-logo.png"
+            alt="KCC Logo"
+            className="brand-logo"
+          />
           <span>
             <strong>KCC<span className="brand-period">.</span></strong>
             <small>KUMMALLOOR CRICKET CLUB</small>
@@ -122,18 +122,22 @@ function App() {
       {/* HERO */}
       <section className="hero" id="home">
         <div className="hero-noise" />
+
         <div className="stadium-scene" aria-hidden="true">
           <div className="stadium-lights stadium-lights-left" />
           <div className="stadium-lights stadium-lights-right" />
           <div className="stadium-stands" />
+
           <div className="stadium-field">
             <div className="field-circle" />
+
             <div className="field-pitch">
               <div className="pitch-crease pitch-crease-top" />
               <div className="pitch-crease pitch-crease-bottom" />
               <div className="pitch-stumps" />
             </div>
           </div>
+
           <div className="stadium-ball" />
         </div>
 
@@ -151,14 +155,14 @@ function App() {
           </h1>
 
           <p className="hero-description">
-            One village. One passion. A community united
-            by the game we love.
+            Bringing cricket lovers together.
           </p>
 
           <div className="hero-actions">
             <a href="#join" className="primary">
               BECOME A MEMBER <span>↗</span>
             </a>
+
             <a href="#about" className="secondary-link">
               EXPLORE THE CLUB <span>↓</span>
             </a>
@@ -166,11 +170,9 @@ function App() {
         </div>
 
         <div className="hero-bottom">
-          <span>ONE VILLAGE. ONE COMMUNITY.</span>
-          <span>PLAY · COMPETE · BELONG</span>
+          <span>ONE CLUB. ONE COMMUNITY.</span>
+          <span>PLAY · CONNECT · GROW</span>
         </div>
-
-        <div className="hero-side-label">KUMMALLOOR CRICKET CLUB</div>
       </section>
 
       {/* INTRODUCTION */}
@@ -182,6 +184,7 @@ function App() {
         <div className="intro-grid">
           <div>
             <p className="intro-overline">BUILT AROUND THE GAME</p>
+
             <h2>
               A CLUB FOR<br />
               EVERYONE WHO<br />
@@ -191,14 +194,16 @@ function App() {
 
           <div className="intro-copy">
             <p>
-              Kummalloor Cricket Club brings together people
+              Based in Kummalloor, we bring together people
               who share one passion — cricket.
             </p>
+
             <p>
               Whether you want to play, compete, support
               the team or simply be part of the community,
               there's a place for you here.
             </p>
+
             <a href="#join" className="text-link">
               FIND YOUR PLACE AT KCC ↗
             </a>
@@ -215,8 +220,12 @@ function App() {
         <div className="community-heading">
           <div>
             <p className="section-overline">MORE THAN A TEAM</p>
-            <h2>MORE THAN<br /><span>JUST MATCHES.</span></h2>
+            <h2>
+              MORE THAN<br />
+              <span>JUST MATCHES.</span>
+            </h2>
           </div>
+
           <p>
             Cricket brings us together. The community
             keeps us connected.
@@ -236,22 +245,22 @@ function App() {
           </article>
 
           <article className="benefit-card">
-            <span className="benefit-number">02 / COMPETE</span>
-            <div className="benefit-icon">🏆</div>
-            <h3>COMPETE TOGETHER</h3>
+            <span className="benefit-number">02 / CONNECT</span>
+            <div className="benefit-icon">🤝</div>
+            <h3>CONNECT TOGETHER</h3>
             <p>
-              Build a competitive team and take part
-              in tournaments.
+              Meet players and supporters who share
+              your passion for cricket.
             </p>
             <span className="card-arrow">↗</span>
           </article>
 
           <article className="benefit-card">
-            <span className="benefit-number">03 / BELONG</span>
-            <div className="benefit-icon">🤝</div>
+            <span className="benefit-number">03 / GROW</span>
+            <div className="benefit-icon">🌱</div>
             <h3>GROW TOGETHER</h3>
             <p>
-              Connect with local players and supporters
+              Build friendships with players and supporters
               who share your passion.
             </p>
             <span className="card-arrow">↗</span>
@@ -268,14 +277,17 @@ function App() {
         <div className="membership-grid">
           <div className="membership-copy">
             <p className="membership-tag">YOUR CLUB. YOUR COMMUNITY.</p>
+
             <h2>
               ONE CLUB.<br />
               <span>ONE HUNDRED.</span>
             </h2>
+
             <p className="membership-description">
               Membership is open to cricket players
-              and supporters from Kummalloor.
+              and supporters from anywhere.
             </p>
+
             <a href="#join" className="text-link">
               BECOME PART OF KCC ↗
             </a>
@@ -317,7 +329,11 @@ function App() {
         <div className="section-kicker">
           <span>04</span> GET STARTED
         </div>
-        <h2>THREE STEPS.<br /><span>ONE COMMUNITY.</span></h2>
+
+        <h2>
+          THREE STEPS.<br />
+          <span>ONE COMMUNITY.</span>
+        </h2>
 
         <div className="steps-grid">
           <div className="step-item">
@@ -325,11 +341,13 @@ function App() {
             <h3>REGISTER</h3>
             <p>Complete the membership registration form.</p>
           </div>
+
           <div className="step-item">
             <span>02</span>
             <h3>CONNECT</h3>
             <p>Join the KCC WhatsApp community.</p>
           </div>
+
           <div className="step-item">
             <span>03</span>
             <h3>ACTIVATE</h3>
@@ -347,20 +365,24 @@ function App() {
         <div className="join-grid">
           <div className="join-heading">
             <p className="section-overline">YOUR NEXT INNINGS STARTS HERE</p>
+
             <h2>
               YOUR<br />
               <span>CLUB.</span><br />
               YOUR GAME.
             </h2>
+
             <p>
               Take the first step. Register with KCC
               and become part of our cricket community.
             </p>
+
             <div className="join-highlight">
               <span className="join-highlight-mark">K</span>
+
               <div>
                 <strong>KUMMALLOOR CRICKET CLUB</strong>
-                <small>PLAY · COMPETE · BELONG</small>
+                <small>PLAY · CONNECT · GROW</small>
               </div>
             </div>
           </div>
@@ -372,6 +394,7 @@ function App() {
                 <h3>MEMBER REGISTRATION</h3>
                 <p>Fields marked * are required.</p>
               </div>
+
               <span className="form-number">KCC / 2026</span>
             </div>
 
@@ -445,6 +468,7 @@ function App() {
                 checked={form.consent}
                 onChange={e => update("consent", e.target.checked)}
               />
+
               <span>
                 I agree that the club committee may contact
                 me about my registration.
@@ -525,11 +549,17 @@ function App() {
       {/* FINAL CALL TO ACTION */}
       <section className="closing-section">
         <p>THE GAME IS BETTER TOGETHER.</p>
-        <h2>SEE YOU<br /><span>ON THE FIELD.</span></h2>
+
+        <h2>
+          SEE YOU<br />
+          <span>ON THE FIELD.</span>
+        </h2>
+
         <a href="#join" className="primary">
           JOIN KCC TODAY ↗
         </a>
-        <div className="closing-decoration">KCC</div>
+
+        <div className="closing-decoration" aria-hidden="true" />
       </section>
 
       {/* FOOTER */}
@@ -537,10 +567,11 @@ function App() {
         <div className="footer-top">
           <a href="#home" className="brand footer-brand">
             <img
-  src="/kcc-logo.png"
-  alt="KCC Logo"
-  className="brand-logo"
-/>
+              src="/kcc-logo.png"
+              alt="KCC Logo"
+              className="brand-logo"
+            />
+
             <span>
               <strong>KCC<span className="brand-period">.</span></strong>
               <small>KUMMALLOOR CRICKET CLUB</small>
