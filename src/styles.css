@@ -1500,3 +1500,117 @@ button {
     height: 42px;
   }
 }
+
+/* =================================
+   KCC VISUAL REFINEMENTS
+================================= */
+
+/* 1. Keep the hero badge on one line */
+.hero-label {
+  white-space: nowrap;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+}
+
+/* 2. Move cricket stumps away from hero text */
+.pitch-stumps {
+  top: 76%;
+  opacity: 0.65;
+}
+
+/* 3. Make the cricket ball brighter and more visible */
+.stadium-ball {
+  opacity: 0.95;
+  background: radial-gradient(
+    circle at 32% 28%,
+    #ffd1c4 0%,
+    #f06452 35%,
+    #c8322b 68%,
+    #721b1b 100%
+  );
+  box-shadow:
+    0 0 35px rgba(255, 85, 65, 0.3),
+    0 0 75px rgba(255, 85, 65, 0.16);
+}
+
+.stadium-ball::after {
+  border-left: 2px dashed rgba(255,255,255,.9);
+}
+
+/* Additional curved ball seam */
+.stadium-ball::before {
+  content: "";
+  position: absolute;
+  inset: 8px 34px;
+  border-right: 2px dashed rgba(255,255,255,.65);
+  border-radius: 50%;
+  transform: rotate(28deg);
+}
+
+/* 4. Improve registration form spacing */
+.registration-form > label:not(.consent) {
+  margin: 18px 0 0;
+}
+
+.registration-form > .form-heading + label {
+  margin-top: 0;
+}
+
+.registration-form > input,
+.registration-form > select,
+.registration-form > textarea {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.registration-form > .consent {
+  margin: 20px 0 17px;
+}
+
+/* 5. Improve closing section CTA spacing */
+.closing-section > p,
+.closing-section > h2 {
+  position: relative;
+  z-index: 1;
+}
+
+.closing-section > .primary {
+  position: relative;
+  z-index: 2;
+  margin-top: 28px;
+}
+
+.closing-decoration {
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 6. Mobile refinements */
+@media (max-width: 650px) {
+  .hero-label {
+    max-width: 100%;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 8px 10px;
+  }
+
+  .pitch-stumps {
+    top: 76%;
+  }
+
+  .stadium-ball {
+    width: 52px;
+  }
+
+  .registration-form > label:not(.consent) {
+    margin-top: 17px;
+  }
+
+  .registration-form > .form-heading + label {
+    margin-top: 0;
+  }
+
+  .closing-section > .primary {
+    margin-top: 24px;
+  }
+}
