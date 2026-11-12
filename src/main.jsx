@@ -83,7 +83,11 @@ function App() {
       {/* NAVIGATION */}
       <nav className="nav">
         <a href="#home" className="brand" onClick={closeMenu}>
-          <span className="brand-mark">K</span>
+          <img
+  src="/kcc-logo.png"
+  alt="KCC Logo"
+  className="brand-logo"
+/>
           <span>
             <strong>KCC<span className="brand-period">.</span></strong>
             <small>KUMMALLOOR CRICKET CLUB</small>
@@ -532,7 +536,11 @@ function App() {
       <footer className="footer">
         <div className="footer-top">
           <a href="#home" className="brand footer-brand">
-            <span className="brand-mark">K</span>
+            <img
+  src="/kcc-logo.png"
+  alt="KCC Logo"
+  className="brand-logo"
+/>
             <span>
               <strong>KCC<span className="brand-period">.</span></strong>
               <small>KUMMALLOOR CRICKET CLUB</small>
