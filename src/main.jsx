@@ -185,11 +185,11 @@ function App() {
             KUMMALLOOR · KERALA · EST. 2026
           </div>
 
-          <p className="hero-eyebrow">THE HOME OF LOCAL CRICKET</p>
+          <p className="hero-eyebrow">WHERE CRICKET BRINGS US TOGETHER</p>
 
           <h1>
-            THIS IS<br />
-            <span>OUR GAME.</span>
+            WHERE MEMORIES<br />
+            <span>ARE MADE.</span>
           </h1>
 
           <p className="hero-description">
