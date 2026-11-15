@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
@@ -24,6 +24,43 @@ function App() {
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [registrationId, setRegistrationId] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+
+const [players, setPlayers] = useState([]);
+const [playersLoading, setPlayersLoading] = useState(true);
+const [playersError, setPlayersError] = useState("");
+
+useEffect(() => {
+  let active = true;
+
+  async function loadPlayers() {
+    try {
+      const response = await fetch("/api/players");
+      const result = await response.json();
+
+      if (!response.ok || !result.success || !Array.isArray(result.players)) {
+        throw new Error(result.message || "Unable to load players.");
+      }
+
+      if (active) {
+        setPlayers(result.players);
+      }
+    } catch (error) {
+      if (active) {
+        setPlayersError(error.message || "Unable to load player profiles.");
+      }
+    } finally {
+      if (active) {
+        setPlayersLoading(false);
+      }
+    }
+  }
+
+  loadPlayers();
+
+  return () => {
+    active = false;
+  };
+}, []);
 
   function update(field, value) {
     setForm(previous => ({ ...previous, [field]: value }));
@@ -97,6 +134,7 @@ function App() {
         <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
           <a href="#about" onClick={closeMenu}>ABOUT</a>
           <a href="#community" onClick={closeMenu}>COMMUNITY</a>
+          <a href="#players" onClick={closeMenu}>PLAYERS</a>
           <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
           <a href="#join" onClick={closeMenu} className="mobile-nav-join">
             JOIN KCC ↗
@@ -267,6 +305,101 @@ function App() {
           </article>
         </div>
       </section>
+
+{/* PLAYERS */}
+<section className="players-section" id="players">
+  <div className="section-kicker">
+    <span>03</span> THE KCC PLAYERS
+  </div>
+
+  <div className="players-heading">
+    <div>
+      <p className="section-overline">MEET THE TEAM</p>
+      <h2>
+        OUR<br />
+        <span>PLAYERS.</span>
+      </h2>
+    </div>
+
+    <p>
+      Meet the people who make KCC a cricket community.
+      Every player has a place in our story.
+    </p>
+  </div>
+
+  {playersLoading ? (
+    <p className="players-state">Loading player profiles...</p>
+  ) : playersError ? (
+    <p className="players-state players-error">{playersError}</p>
+  ) : players.length === 0 ? (
+    <p className="players-state">
+      Player profiles will appear here soon.
+    </p>
+  ) : (
+    <div className="players-grid">
+      {players.map((player) => {
+        const name = player.name || "KCC Player";
+
+        const initials = name
+          .split(/\s+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map(part => part[0])
+          .join("")
+          .toUpperCase();
+
+        const photoFile = player.photoFile || "";
+
+        const validPhoto =
+          /^[a-zA-Z0-9_-]+\.(jpg|jpeg|png|webp)$/i.test(photoFile);
+
+        return (
+          <article
+            className="player-card"
+            key={player.registrationId || name}
+          >
+            <div className="player-photo">
+              <span>{initials}</span>
+
+              {validPhoto && (
+                <img
+                  src={`/players/${photoFile}`}
+                  alt={`${name} - KCC player`}
+                  loading="lazy"
+                  onError={event => {
+                    event.currentTarget.style.display = "none";
+                  }}
+                />
+              )}
+            </div>
+
+            <div className="player-details">
+              <span className="player-role">
+                {player.role || "Player"}
+              </span>
+
+              <h3>{name}</h3>
+
+              {player.battingStyle && (
+                <p>
+                  <span>BAT</span>
+                  {player.battingStyle}
+                </p>
+              )}
+
+              {player.bowlingStyle && (
+                <p>
+                  <span>BOWL</span>
+                  {player.bowlingStyle}
+                </p>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  )}
+</section>
 
       {/* MEMBERSHIP */}
       <section className="membership-section" id="membership">
