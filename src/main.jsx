@@ -132,11 +132,11 @@ function App() {
         </a>
 
         <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
-          <a href="#about" onClick={closeMenu}>ABOUT</a>
-          <a href="#community" onClick={closeMenu}>COMMUNITY</a>
-          <a href="#players" onClick={closeMenu}>PLAYERS</a>
-          <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
-          <a href="#join" onClick={closeMenu} className="mobile-nav-join">
+         <a href="#about" onClick={closeMenu}>ABOUT</a>
+<a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
+<a href="#players" onClick={closeMenu}>SQUAD</a>
+<a href="#join" onClick={closeMenu}>JOIN</a>
+          
             JOIN KCC ↗
           </a>
         </div>
@@ -185,13 +185,11 @@ function App() {
             KUMMALLOOR, KERALA
           </div>
 
-          <p className="hero-eyebrow">WHERE MEMORIES ARE MADE</p>
-
           <h1>
   BRINGING CRICKET<br />
   <span>LOVERS TOGETHER.</span>
 </h1>
-
+<p className="hero-eyebrow">WHERE MEMORIES ARE MADE</p>
           <p className="hero-description">
   Kummalloor's own cricket club. Bringing players and supporters together, with all skill levels welcome.
 </p>
