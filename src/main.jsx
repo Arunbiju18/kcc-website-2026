@@ -185,7 +185,7 @@ function App() {
             KUMMALLOOR, KERALA
           </div>
 
-          <p className="hero-eyebrow">WHERE MEMORIES ARE MADE/p>
+          <p className="hero-eyebrow">WHERE MEMORIES ARE MADE</p>
 
           <h1>
   BRINGING CRICKET<br />
