@@ -1366,8 +1366,8 @@ button {
 }
 
 .hero-label { animation-delay: .1s; }
-.hero-eyebrow { animation-delay: .2s; }
-.hero h1 { animation-delay: .3s; }
+.hero h1 { animation-delay: .2s; }
+.hero-eyebrow { animation-delay: .3s; }
 .hero-description { animation-delay: .45s; }
 .hero-actions { animation-delay: .6s; }
 
