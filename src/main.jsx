@@ -125,6 +125,7 @@ function App() {
             alt="KCC Logo"
             className="brand-logo"
           />
+
           <span>
             <strong>KCC<span className="brand-period">.</span></strong>
             <small>KUMMALLOOR CRICKET CLUB</small>
@@ -132,12 +133,17 @@ function App() {
         </a>
 
         <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
-         <a href="#about" onClick={closeMenu}>ABOUT</a>
-<a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
-<a href="#players" onClick={closeMenu}>SQUAD</a>
-<a href="#join" onClick={closeMenu} className="mobile-nav-join">
-  JOIN KCC ↗
-</a>
+          <a href="#about" onClick={closeMenu}>ABOUT</a>
+          <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
+          <a href="#players" onClick={closeMenu}>SQUAD</a>
+
+          <a
+            href="#join"
+            onClick={closeMenu}
+            className="mobile-nav-join"
+          >
+            JOIN KCC ↗
+          </a>
         </div>
 
         <a className="nav-join" href="#join">
@@ -181,89 +187,105 @@ function App() {
         <div className="hero-content">
           <div className="hero-label">
             <span className="live-dot" />
-            KUMMALLOOR, KERALA
+            KUMMALLOOR · KERALA
           </div>
 
           <h1>
-  BRINGING CRICKET<br />
-  <span>LOVERS TOGETHER.</span>
-</h1>
-<p className="hero-eyebrow">WHERE MEMORIES ARE MADE</p>
+            BRINGING CRICKET<br />
+            <span>LOVERS TOGETHER.</span>
+          </h1>
+
+          <p className="hero-eyebrow">
+            WHERE MEMORIES ARE MADE
+          </p>
+
           <p className="hero-description">
-  Kummalloor's own cricket club. Bringing players and supporters together, with all skill levels welcome.
-</p>
+            Kummalloor's own cricket club. A place to play,
+            connect and grow, with all skill levels welcome.
+          </p>
 
           <div className="hero-actions">
             <a href="#join" className="primary">
-              BECOME A MEMBER <span>↗</span>
-            </a>
-
-            <a href="#about" className="secondary-link">
-              EXPLORE THE CLUB <span>↓</span>
+              JOIN KCC <span>↗</span>
             </a>
           </div>
         </div>
 
         <div className="hero-bottom">
-          <span>ONE CLUB. ONE COMMUNITY.</span>
-          <span>PLAY · CONNECT · GROW</span>
+          <span className="hero-side-label">
+            ONE CLUB. ONE COMMUNITY.
+          </span>
+
+          <span className="hero-side-label">
+            PLAY · CONNECT · GROW
+          </span>
         </div>
       </section>
 
-      {/* INTRODUCTION */}
+      {/* OUR STORY */}
       <section className="intro-section" id="about">
         <div className="section-kicker">
-          <span>01</span> WHO WE ARE
+          <span>01</span> OUR STORY
         </div>
 
         <div className="intro-grid">
           <div>
-            <p className="intro-overline">BUILT AROUND THE GAME</p>
+            <p className="intro-overline">
+              BUILT AROUND THE GAME
+            </p>
 
             <h2>
-              A CLUB FOR<br />
-              EVERYONE WHO<br />
-              <span>LOVES CRICKET.</span>
+              MORE THAN<br />
+              JUST A GAME.
             </h2>
           </div>
 
           <div className="intro-copy">
             <p>
-              Based in Kummalloor, we bring together people
-              who share one passion — cricket.
+              Cricket has always been about more than runs
+              and wickets. It's about friendships, teamwork,
+              competition and the memories we create together.
             </p>
 
             <p>
-              Whether you want to play, compete, support
-              the team or simply be part of the community,
-              there's a place for you here.
+              Kummalloor Cricket Club brings people together
+              through a shared passion for cricket. Whether
+              you want to play, support the team or simply be
+              part of the community, there's a place for you here.
+            </p>
+
+            <p>
+              From Kummalloor, built around a love for cricket.
             </p>
 
             <a href="#join" className="text-link">
-              FIND YOUR PLACE AT KCC ↗
+              JOIN KCC ↗
             </a>
           </div>
         </div>
       </section>
 
-      {/* COMMUNITY */}
+      {/* OUR COMMUNITY */}
       <section className="community-section" id="community">
         <div className="section-kicker">
-          <span>02</span> THE KCC COMMUNITY
+          <span>02</span> OUR COMMUNITY
         </div>
 
         <div className="community-heading">
           <div>
-            <p className="section-overline">MORE THAN A TEAM</p>
+            <p className="section-overline">
+              DIFFERENT WAYS TO BELONG
+            </p>
+
             <h2>
-              MORE THAN<br />
-              <span>JUST MATCHES.</span>
+              ONE COMMUNITY.<br />
+              <span>DIFFERENT WAYS TO BELONG.</span>
             </h2>
           </div>
 
           <p>
-            Cricket brings us together. The community
-            keeps us connected.
+            You don't have to be a good player to be part of KCC.
+            There's a place for everyone who loves cricket.
           </p>
         </div>
 
@@ -271,42 +293,46 @@ function App() {
           <article className="benefit-card">
             <span className="benefit-number">01 / PLAY</span>
             <div className="benefit-icon">🏏</div>
-            <h3>PLAY TOGETHER</h3>
+
+            <h3>PLAY</h3>
+
             <p>
-              Friendly matches, weekend cricket and
-              opportunities to represent the club.
+              Practise, play friendly matches and get
+              opportunities to represent KCC.
             </p>
-            <span className="card-arrow">↗</span>
           </article>
 
           <article className="benefit-card">
-            <span className="benefit-number">02 / CONNECT</span>
+            <span className="benefit-number">02 / SUPPORT</span>
             <div className="benefit-icon">🤝</div>
-            <h3>CONNECT TOGETHER</h3>
+
+            <h3>SUPPORT</h3>
+
             <p>
-              Meet players and supporters who share
-              your passion for cricket.
+              Be part of the club, support its activities
+              and share the excitement of cricket.
             </p>
-            <span className="card-arrow">↗</span>
           </article>
 
           <article className="benefit-card">
             <span className="benefit-number">03 / GROW</span>
             <div className="benefit-icon">🌱</div>
-            <h3>GROW TOGETHER</h3>
+
+            <h3>GROW</h3>
+
             <p>
-              Build friendships with players and supporters
-              who share your passion.
+              Build friendships, develop your game and
+              grow together as a community.
             </p>
-            <span className="card-arrow">↗</span>
           </article>
         </div>
+
+        <p className="community-note">
+          ALL SKILL LEVELS WELCOME. OPEN TO NEW PLAYERS.
+        </p>
       </section>
 
-      {/* PLAYERS */}
-      
-      
-      {/* PLAYERS — KCC SQUAD */}
+      {/* KCC SQUAD */}
       <section className="players-section" id="players">
         <div className="section-kicker">
           <span>03</span> THE KCC SQUAD
@@ -314,7 +340,10 @@ function App() {
 
         <div className="players-heading">
           <div>
-            <p className="section-overline">OUR CRICKET FAMILY</p>
+            <p className="section-overline">
+              OUR CRICKET FAMILY
+            </p>
+
             <h2>
               MEET THE<br />
               <span>SQUAD.</span>
@@ -323,21 +352,28 @@ function App() {
 
           <div className="squad-intro">
             <p>
-              Every player brings something to the game.
-              Get to know the people behind KCC.
+              Every player brings something different to the team.
+              Get to know the members who make up the KCC squad.
             </p>
 
             <div className="squad-count">
-              <strong>{players.length.toString().padStart(2, "0")}</strong>
+              <strong>
+                {players.length.toString().padStart(2, "0")}
+              </strong>
+
               <span>SQUAD MEMBERS</span>
             </div>
           </div>
         </div>
 
         {playersLoading ? (
-          <p className="players-state">Loading squad...</p>
+          <p className="players-state">
+            Loading squad...
+          </p>
         ) : playersError ? (
-          <p className="players-state players-error">{playersError}</p>
+          <p className="players-state players-error">
+            {playersError}
+          </p>
         ) : players.length === 0 ? (
           <p className="players-state">
             The KCC squad will be announced soon.
@@ -367,11 +403,15 @@ function App() {
                 >
                   <div className="player-card-header">
                     <span>KCC</span>
-                    <span>SQUAD / {String(index + 1).padStart(2, "0")}</span>
+                    <span>
+                      SQUAD / {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
 
                   <div className="player-photo">
-                    <span className="player-initials">{initials}</span>
+                    <span className="player-initials">
+                      {initials}
+                    </span>
 
                     {validPhoto && (
                       <img
@@ -384,7 +424,9 @@ function App() {
                       />
                     )}
 
-                    <span className="player-photo-watermark">KCC</span>
+                    <span className="player-photo-watermark">
+                      KCC
+                    </span>
                   </div>
 
                   <div className="player-details">
@@ -401,11 +443,11 @@ function App() {
                       </p>
 
                       {player.bowlingStyle && (
-  <p>
-    <span>BOWL</span>
-    {player.bowlingStyle}
-  </p>
-)}
+                        <p>
+                          <span>BOWL</span>
+                          {player.bowlingStyle}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -420,35 +462,36 @@ function App() {
         )}
       </section>
 
-
       {/* MEMBERSHIP */}
       <section className="membership-section" id="membership">
         <div className="section-kicker">
-          <span>03</span> MEMBERSHIP
+          <span>04</span> MEMBERSHIP
         </div>
 
         <div className="membership-grid">
           <div className="membership-copy">
-            <p className="membership-tag">YOUR CLUB. YOUR COMMUNITY.</p>
+            <p className="membership-tag">
+              OUR CLUB. OUR COMMUNITY.
+            </p>
 
             <h2>
               ONE CLUB.<br />
-              <span>ONE HUNDRED.</span>
+              <span>ONE COMMUNITY.</span>
             </h2>
 
             <p className="membership-description">
-              Membership is open to cricket players
-              and supporters from anywhere.
+              Whether you want to play cricket or support
+              the club, there's a place for you in KCC.
             </p>
 
             <a href="#join" className="text-link">
-              BECOME PART OF KCC ↗
+              JOIN KCC ↗
             </a>
           </div>
 
           <div className="price-card">
             <div className="price-card-top">
-              <p>MONTHLY CONTRIBUTION</p>
+              <p>ACTIVE PLAYER CONTRIBUTION</p>
               <span className="price-dot" />
             </div>
 
@@ -459,28 +502,49 @@ function App() {
             <div className="price-divider" />
 
             <ul>
-              <li><span>✓</span> Join the KCC community</li>
-              <li><span>✓</span> Participate in club activities</li>
-              <li><span>✓</span> Stay informed about matches</li>
-              <li><span>✓</span> Support local cricket</li>
+              <li>
+                <span>✓</span>
+                Participate in practices and friendly matches as organised
+              </li>
+
+              <li>
+                <span>✓</span>
+                Opportunities for tournament participation and team selection
+              </li>
+
+              <li>
+                <span>✓</span>
+                Access to the KCC WhatsApp community after registration
+              </li>
+
+              <li>
+                <span>✓</span>
+                Be part of club activities and the cricket community
+              </li>
             </ul>
 
+            <div className="price-divider" />
+
             <p className="price-note">
-              No joining fee. Jersey is optional and
-              purchased separately.
+              <strong>Supporters:</strong> Contribution is voluntary.
+              You can be part of KCC without playing.
+            </p>
+
+            <p className="price-note">
+              No joining fee. Jersey is optional and purchased separately.
             </p>
 
             <a href="#join" className="primary full-width">
-              JOIN THE CLUB ↗
+              JOIN KCC ↗
             </a>
           </div>
         </div>
       </section>
 
-      {/* HOW MEMBERSHIP WORKS */}
+      {/* HOW TO JOIN */}
       <section className="steps-section">
         <div className="section-kicker">
-          <span>04</span> GET STARTED
+          <span>05</span> HOW TO JOIN
         </div>
 
         <h2>
@@ -491,20 +555,35 @@ function App() {
         <div className="steps-grid">
           <div className="step-item">
             <span>01</span>
+
             <h3>REGISTER</h3>
-            <p>Complete the membership registration form.</p>
+
+            <p>
+              Tell us a little about yourself and choose
+              Player or Supporter.
+            </p>
           </div>
 
           <div className="step-item">
             <span>02</span>
+
             <h3>CONNECT</h3>
-            <p>Join the KCC WhatsApp community.</p>
+
+            <p>
+              After registration, join the KCC WhatsApp
+              community using your confirmation screen.
+            </p>
           </div>
 
           <div className="step-item">
             <span>03</span>
-            <h3>ACTIVATE</h3>
-            <p>Pay ₹100 monthly and await committee verification.</p>
+
+            <h3>GET CONFIRMED</h3>
+
+            <p>
+              The KCC team reviews your registration and
+              shares membership contribution details through WhatsApp.
+            </p>
           </div>
         </div>
       </section>
@@ -512,12 +591,14 @@ function App() {
       {/* REGISTRATION */}
       <section className="join-section" id="join">
         <div className="section-kicker">
-          <span>05</span> REGISTRATION
+          <span>06</span> REGISTRATION
         </div>
 
         <div className="join-grid">
           <div className="join-heading">
-            <p className="section-overline">YOUR NEXT INNINGS STARTS HERE</p>
+            <p className="section-overline">
+              YOUR NEXT INNINGS STARTS HERE
+            </p>
 
             <h2>
               YOUR<br />
@@ -526,32 +607,34 @@ function App() {
             </h2>
 
             <p>
-              Take the first step. Register with KCC
-              and become part of our cricket community.
+              Interested in playing, supporting or simply
+              being part of something built around cricket?
+              Take your first step. Register your interest
+              and let the KCC team guide you through the process.
             </p>
-
-            <div className="join-highlight">
-              <span className="join-highlight-mark">K</span>
-
-              <div>
-                <strong>KUMMALLOOR CRICKET CLUB</strong>
-                <small>PLAY · CONNECT · GROW</small>
-              </div>
-            </div>
           </div>
 
           <form className="registration-form" onSubmit={submitForm}>
             <div className="form-heading">
               <div>
-                <p className="form-overline">TAKE YOUR PLACE</p>
+                <p className="form-overline">
+                  TAKE YOUR PLACE
+                </p>
+
                 <h3>MEMBER REGISTRATION</h3>
+
                 <p>Fields marked * are required.</p>
               </div>
 
-              <span className="form-number">KCC / 2026</span>
+              <span className="form-number">
+                KCC / 2026
+              </span>
             </div>
 
-            <label htmlFor="name">FULL NAME *</label>
+            <label htmlFor="name">
+              FULL NAME *
+            </label>
+
             <input
               id="name"
               required
@@ -561,7 +644,10 @@ function App() {
               placeholder="Enter your full name"
             />
 
-            <label htmlFor="phone">WHATSAPP NUMBER *</label>
+            <label htmlFor="phone">
+              WHATSAPP NUMBER *
+            </label>
+
             <input
               id="phone"
               required
@@ -575,7 +661,10 @@ function App() {
               placeholder="10-digit mobile number"
             />
 
-            <label htmlFor="type">MEMBERSHIP TYPE *</label>
+            <label htmlFor="type">
+              MEMBERSHIP TYPE *
+            </label>
+
             <select
               id="type"
               value={form.type}
@@ -585,7 +674,10 @@ function App() {
               <option value="Supporter">Cricket supporter</option>
             </select>
 
-            <label htmlFor="location">LOCALITY *</label>
+            <label htmlFor="location">
+              LOCALITY *
+            </label>
+
             <input
               id="location"
               required
@@ -594,7 +686,10 @@ function App() {
               placeholder="Your locality"
             />
 
-            <label htmlFor="jersey">JERSEY PREFERENCE</label>
+            <label htmlFor="jersey">
+              JERSEY PREFERENCE
+            </label>
+
             <select
               id="jersey"
               value={form.jersey}
@@ -605,14 +700,17 @@ function App() {
               <option value="No">Not interested</option>
             </select>
 
-            <label htmlFor="note">MESSAGE (OPTIONAL)</label>
+            <label htmlFor="note">
+              MESSAGE (OPTIONAL)
+            </label>
+
             <textarea
               id="note"
               rows="3"
               maxLength="500"
               value={form.note}
               onChange={e => update("note", e.target.value)}
-              placeholder="Anything you want the committee to know?"
+              placeholder="Anything you want the KCC team to know?"
             />
 
             <label className="consent">
@@ -623,13 +721,14 @@ function App() {
               />
 
               <span>
-                I agree that the club committee may contact
-                me about my registration.
+                I agree that the KCC team may contact me
+                about my registration.
               </span>
             </label>
 
             <div className="honeypot" aria-hidden="true">
               <label>Leave this field empty</label>
+
               <input
                 tabIndex="-1"
                 autoComplete="off"
@@ -659,9 +758,18 @@ function App() {
             {registrationSuccess && (
               <div className="whatsapp-invite">
                 <div className="success-icon">✓</div>
-                <p className="form-overline">REGISTRATION RECEIVED</p>
-                <h3>WELCOME TO KCC!</h3>
-                <p>Your registration has been received.</p>
+
+                <p className="form-overline">
+                  REGISTRATION RECEIVED
+                </p>
+
+                <h3>YOU'RE ONE STEP CLOSER TO KCC!</h3>
+
+                <p>
+                  Your registration has been received.
+                  Join the KCC WhatsApp community to stay
+                  connected and receive club updates.
+                </p>
 
                 {registrationId && (
                   <p className="registration-id">
@@ -669,33 +777,95 @@ function App() {
                   </p>
                 )}
 
-                <p>
-                  Connect with KCC players and supporters
-                  through our WhatsApp group.
-                </p>
-
                 <a
                   className="primary full-width"
                   href={WHATSAPP_GROUP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  JOIN KCC WHATSAPP GROUP ↗
+                  JOIN WHATSAPP COMMUNITY ↗
                 </a>
 
                 <p className="form-note">
-                  Your official membership becomes active
-                  only after the committee verifies your
-                  ₹100 monthly contribution.
+                  The KCC team will review your registration
+                  and share the applicable membership contribution
+                  details through WhatsApp.
                 </p>
               </div>
             )}
 
             <p className="form-note">
-              Registration alone does not activate membership.
-              Payment must be received and verified by the committee.
+              Your registration will be reviewed by the KCC team.
+              Membership contribution details are shared through WhatsApp.
             </p>
           </form>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="faq-section" id="faq">
+        <div className="section-kicker">
+          <span>07</span> FREQUENTLY ASKED QUESTIONS
+        </div>
+
+        <div className="faq-heading">
+          <p className="section-overline">
+            NEED TO KNOW MORE?
+          </p>
+
+          <h2>
+            GOOD TO<br />
+            <span>KNOW.</span>
+          </h2>
+        </div>
+
+        <div className="faq-list">
+          <article className="faq-item">
+            <h3>Who can join KCC?</h3>
+            <p>
+              Anyone who loves cricket can join as a player
+              or a cricket supporter.
+            </p>
+          </article>
+
+          <article className="faq-item">
+            <h3>Do I need cricket experience?</h3>
+            <p>
+              No. All skill levels are welcome, and new players
+              are encouraged to join.
+            </p>
+          </article>
+
+          <article className="faq-item">
+            <h3>What is the monthly contribution?</h3>
+            <p>
+              Active players contribute ₹100 per month.
+              Supporter contributions are voluntary.
+            </p>
+          </article>
+
+          <article className="faq-item">
+            <h3>Can I join without playing?</h3>
+            <p>
+              Yes. Choose Cricket supporter in the registration
+              form to be part of the KCC community without playing.
+            </p>
+          </article>
+
+          <article className="faq-item">
+            <h3>When and where are practices and matches?</h3>
+            <p>
+              Ground, practice timings and match updates are
+              shared through the KCC WhatsApp community.
+            </p>
+          </article>
+
+          <article className="faq-item">
+            <h3>Is the KCC jersey compulsory?</h3>
+            <p>
+              No. The jersey is optional and purchased separately.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -709,7 +879,7 @@ function App() {
         </h2>
 
         <a href="#join" className="primary">
-          JOIN KCC TODAY ↗
+          JOIN KCC ↗
         </a>
 
         <div className="closing-decoration" aria-hidden="true" />
@@ -731,20 +901,32 @@ function App() {
             </span>
           </a>
 
-          <a
-            href={WHATSAPP_GROUP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WHATSAPP COMMUNITY ↗
-          </a>
+          <p className="footer-location">
+            KUMMALLOOR, KERALA
+          </p>
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 KUMMALLOOR CRICKET CLUB</span>
-          <a href="#home">BACK TO TOP ↑</a>
+          <p>
+            © 2026 KUMMALLOOR CRICKET CLUB. ALL RIGHTS RESERVED.
+          </p>
+
+          <p>
+            PLAY · CONNECT · GROW
+          </p>
+
+          <a href="#home">
+            BACK TO TOP ↑
+          </a>
         </div>
+
+        <p className="footer-privacy">
+          Information submitted through this website is used
+          by the KCC team for membership processing and club
+          communication.
+        </p>
       </footer>
+
     </main>
   );
 }
