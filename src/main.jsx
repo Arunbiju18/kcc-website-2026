@@ -257,10 +257,6 @@ function App() {
             <p>
               From Kummalloor, built around a love for cricket.
             </p>
-
-            <a href="#join" className="text-link">
-              JOIN KCC ↗
-            </a>
           </div>
         </div>
       </section>
@@ -326,10 +322,6 @@ function App() {
             </p>
           </article>
         </div>
-
-        <p className="community-note">
-          ALL SKILL LEVELS WELCOME. OPEN TO NEW PLAYERS.
-        </p>
       </section>
 
       {/* KCC SQUAD */}
@@ -483,10 +475,6 @@ function App() {
               Whether you want to play cricket or support
               the club, there's a place for you in KCC.
             </p>
-
-            <a href="#join" className="text-link">
-              JOIN KCC ↗
-            </a>
           </div>
 
           <div className="price-card">
@@ -794,10 +782,12 @@ function App() {
               </div>
             )}
 
-            <p className="form-note">
-              Your registration will be reviewed by the KCC team.
-              Membership contribution details are shared through WhatsApp.
-            </p>
+            {!registrationSuccess && (
+              <p className="form-note">
+                Your registration will be reviewed by the KCC team.
+                Membership contribution details are shared through WhatsApp.
+              </p>
+            )}
           </form>
         </div>
       </section>
@@ -820,52 +810,54 @@ function App() {
         </div>
 
         <div className="faq-list">
-          <article className="faq-item">
-            <h3>Who can join KCC?</h3>
+
+          <details className="faq-item">
+            <summary>Who can join KCC?</summary>
             <p>
               Anyone who loves cricket can join as a player
               or a cricket supporter.
             </p>
-          </article>
+          </details>
 
-          <article className="faq-item">
-            <h3>Do I need cricket experience?</h3>
+          <details className="faq-item">
+            <summary>Do I need cricket experience?</summary>
             <p>
               No. All skill levels are welcome, and new players
               are encouraged to join.
             </p>
-          </article>
+          </details>
 
-          <article className="faq-item">
-            <h3>What is the monthly contribution?</h3>
+          <details className="faq-item">
+            <summary>What is the monthly contribution?</summary>
             <p>
               Active players contribute ₹100 per month.
               Supporter contributions are voluntary.
             </p>
-          </article>
+          </details>
 
-          <article className="faq-item">
-            <h3>Can I join without playing?</h3>
+          <details className="faq-item">
+            <summary>Can I join without playing?</summary>
             <p>
               Yes. Choose Cricket supporter in the registration
               form to be part of the KCC community without playing.
             </p>
-          </article>
+          </details>
 
-          <article className="faq-item">
-            <h3>When and where are practices and matches?</h3>
+          <details className="faq-item">
+            <summary>When and where are practices and matches?</summary>
             <p>
               Ground, practice timings and match updates are
               shared through the KCC WhatsApp community.
             </p>
-          </article>
+          </details>
 
-          <article className="faq-item">
-            <h3>Is the KCC jersey compulsory?</h3>
+          <details className="faq-item">
+            <summary>Is the KCC jersey compulsory?</summary>
             <p>
               No. The jersey is optional and purchased separately.
             </p>
-          </article>
+          </details>
+
         </div>
       </section>
 
@@ -877,10 +869,6 @@ function App() {
           SEE YOU<br />
           <span>ON THE FIELD.</span>
         </h2>
-
-        <a href="#join" className="primary">
-          JOIN KCC ↗
-        </a>
 
         <div className="closing-decoration" aria-hidden="true" />
       </section>
