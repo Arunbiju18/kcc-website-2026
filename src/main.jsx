@@ -135,10 +135,9 @@ function App() {
          <a href="#about" onClick={closeMenu}>ABOUT</a>
 <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
 <a href="#players" onClick={closeMenu}>SQUAD</a>
-<a href="#join" onClick={closeMenu}>JOIN</a>
-          
-            JOIN KCC ↗
-          </a>
+<a href="#join" onClick={closeMenu} className="mobile-nav-join">
+  JOIN KCC ↗
+</a>
         </div>
 
         <a className="nav-join" href="#join">
