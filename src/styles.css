@@ -2040,3 +2040,21 @@ button {
 .player-photo-watermark {
   display: none;
 }
+
+/* KCC HERO TAGLINE REFINEMENT */
+.hero-eyebrow {
+  margin: 22px 0 0;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+  .hero-eyebrow {
+    margin-top: 18px;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}
