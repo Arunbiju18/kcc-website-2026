@@ -182,19 +182,19 @@ function App() {
         <div className="hero-content">
           <div className="hero-label">
             <span className="live-dot" />
-            KUMMALLOOR · KERALA · EST. 2026
+            KUMMALLOOR, KERALA
           </div>
 
-          <p className="hero-eyebrow">BRINGING CRICKET LOVERS TOGETHER</p>
+          <p className="hero-eyebrow">WHERE MEMORIES ARE MADE/p>
 
           <h1>
-            WHERE MEMORIES<br />
-            <span>ARE MADE.</span>
-          </h1>
+  BRINGING CRICKET<br />
+  <span>LOVERS TOGETHER.</span>
+</h1>
 
           <p className="hero-description">
-            Bringing cricket lovers together.
-          </p>
+  Kummalloor's own cricket club. Bringing players and supporters together, with all skill levels welcome.
+</p>
 
           <div className="hero-actions">
             <a href="#join" className="primary">
