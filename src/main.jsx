@@ -307,37 +307,46 @@ function App() {
       </section>
 
       {/* PLAYERS */}
-      <section className="players-section" id="players">
+      
+      {/* PLAYERS — IPL-STYLE SQUAD */}
+      <section className="players-section squad-section" id="players">
         <div className="section-kicker">
-          <span>03</span> THE KCC PLAYERS
+          <span>03</span> THE KCC SQUAD
         </div>
 
-        <div className="players-heading">
+        <div className="squad-heading">
           <div>
-            <p className="section-overline">MEET THE TEAM</p>
+            <p className="section-overline">ONE CLUB. ONE SQUAD.</p>
             <h2>
-              OUR<br />
-              <span>PLAYERS.</span>
+              MEET THE<br />
+              <span>SQUAD.</span>
             </h2>
           </div>
 
-          <p>
-            Meet the people who make KCC a cricket community.
-            Every player has a place in our story.
-          </p>
+          <div className="squad-heading-info">
+            <p>
+              The players who represent the spirit of Kummalloor Cricket Club.
+              Different strengths. One team.
+            </p>
+            {!playersLoading && !playersError && (
+              <span className="squad-count">
+                {players.length} {players.length === 1 ? "PLAYER" : "PLAYERS"}
+              </span>
+            )}
+          </div>
         </div>
 
         {playersLoading ? (
-          <p className="players-state">Loading player profiles...</p>
+          <p className="players-state">Loading KCC squad...</p>
         ) : playersError ? (
           <p className="players-state players-error">{playersError}</p>
         ) : players.length === 0 ? (
           <p className="players-state">
-            Player profiles will appear here soon.
+            The KCC squad will be announced here soon.
           </p>
         ) : (
-          <div className="players-grid">
-            {players.map((player) => {
+          <div className="squad-grid">
+            {players.map((player, index) => {
               const name = player.name || "KCC Player";
 
               const initials = name
@@ -355,44 +364,61 @@ function App() {
 
               return (
                 <article
-                  className="player-card"
+                  className="squad-card"
                   key={player.registrationId || name}
                 >
-                  <div className="player-photo">
-                    <span>{initials}</span>
+                  <div className="squad-photo">
+                    <div className="squad-photo-placeholder">
+                      {initials}
+                    </div>
 
                     {validPhoto && (
                       <img
                         src={`/players/photos/${encodeURIComponent(photoFile)}`}
-                        alt={`${name} - KCC player`}
+                        alt={`${name} - KCC squad player`}
                         loading="lazy"
                         onError={event => {
                           event.currentTarget.style.display = "none";
                         }}
                       />
                     )}
+
+                    <span className="squad-photo-label">
+                      KCC SQUAD
+                    </span>
+
+                    <span className="squad-index">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
 
-                  <div className="player-details">
-                    <span className="player-role">
-                      {player.role || "Player"}
+                  <div className="squad-card-details">
+                    <span className="squad-role">
+                      {player.role || "PLAYER"}
                     </span>
 
                     <h3>{name}</h3>
 
-                    {player.battingStyle && (
-                      <p>
-                        <span>BAT</span>
-                        {player.battingStyle}
-                      </p>
-                    )}
+                    <div className="squad-player-info">
+                      {player.battingStyle && (
+                        <p>
+                          <span>BAT</span>
+                          {player.battingStyle}
+                        </p>
+                      )}
 
-                    {player.bowlingStyle && (
-                      <p>
-                        <span>BOWL</span>
-                        {player.bowlingStyle}
-                      </p>
-                    )}
+                      {player.bowlingStyle && (
+                        <p>
+                          <span>BOWL</span>
+                          {player.bowlingStyle}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="squad-card-footer">
+                      <span>KUMMALLOOR CRICKET CLUB</span>
+                      <span>KCC.</span>
+                    </div>
                   </div>
                 </article>
               );
@@ -400,6 +426,7 @@ function App() {
           </div>
         )}
       </section>
+
 
       {/* MEMBERSHIP */}
       <section className="membership-section" id="membership">
