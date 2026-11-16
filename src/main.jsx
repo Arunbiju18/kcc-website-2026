@@ -403,10 +403,12 @@ function App() {
                         {player.battingStyle || "Not specified"}
                       </p>
 
-                      <p>
-                        <span>BOWL</span>
-                        {player.bowlingStyle || "Not specified"}
-                      </p>
+                      {player.bowlingStyle && (
+  <p>
+    <span>BOWL</span>
+    {player.bowlingStyle}
+  </p>
+)}
                     </div>
                   </div>
 
