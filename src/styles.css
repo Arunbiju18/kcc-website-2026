@@ -1783,3 +1783,255 @@ button {
     aspect-ratio: 5 / 3;
   }
 }
+
+/* =====================================
+   KCC IPL-STYLE SQUAD CARDS
+===================================== */
+
+.players-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.players-section .players-heading {
+  align-items: end;
+}
+
+.squad-intro {
+  max-width: 300px;
+}
+
+.squad-count {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.squad-count strong {
+  font-size: 42px;
+  line-height: 1;
+  color: #d8b56a;
+}
+
+.squad-count span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #aaa;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.player-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: linear-gradient(155deg, #202020, #101010 75%);
+  border: 1px solid rgba(216, 181, 106, 0.25);
+  border-radius: 5px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-7px);
+  border-color: #d8b56a;
+}
+
+.player-card-header,
+.player-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 17px;
+  color: #d8b56a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.player-card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.player-card-header span:last-child {
+  color: #888;
+}
+
+.player-photo {
+  position: relative;
+  width: 100%;
+  height: 310px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 35%, #45402f 0%, #24221d 48%, #111 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.player-initials {
+  position: absolute;
+  color: rgba(216, 181, 106, 0.35);
+  font-size: 76px;
+  font-weight: 900;
+}
+
+.player-photo-watermark {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.12);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -4px;
+  pointer-events: none;
+}
+
+.player-details {
+  padding: 20px 18px 16px;
+}
+
+.player-role {
+  display: inline-block;
+  padding: 6px 10px;
+  background: rgba(216, 181, 106, 0.12);
+  color: #d8b56a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.player-details h3 {
+  margin: 13px 0 18px;
+  color: #fff;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.15;
+  font-weight: 800;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.player-info {
+  display: grid;
+  gap: 9px;
+}
+
+.player-info p {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.player-info p span {
+  min-width: 40px;
+  color: #d8b56a;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.player-card-footer {
+  margin-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #777;
+  font-size: 8px;
+}
+
+.players-state {
+  margin-top: 35px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .players-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .player-photo {
+    height: 280px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .players-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 35px;
+  }
+
+  .player-card-header,
+  .player-card-footer {
+    padding: 11px 9px;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+
+  .player-photo {
+    height: 190px;
+  }
+
+  .player-initials {
+    font-size: 54px;
+  }
+
+  .player-photo-watermark {
+    font-size: 34px;
+  }
+
+  .player-details {
+    padding: 13px 10px 12px;
+  }
+
+  .player-role {
+    padding: 5px 7px;
+    font-size: 8px;
+  }
+
+  .player-details h3 {
+    margin: 10px 0 13px;
+    font-size: 15px;
+  }
+
+  .player-info {
+    gap: 8px;
+  }
+
+  .player-info p {
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .player-info p span {
+    min-width: 32px;
+    font-size: 8px;
+  }
+
+  .squad-intro {
+    margin-top: 20px;
+  }
+
+  .squad-count strong {
+    font-size: 32px;
+  }
+}
