@@ -2035,3 +2035,8 @@ button {
     font-size: 32px;
   }
 }
+
+/* Remove KCC watermark from player photos */
+.player-photo-watermark {
+  display: none;
+}
