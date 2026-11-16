@@ -308,44 +308,45 @@ function App() {
 
       {/* PLAYERS */}
       
-      {/* PLAYERS — IPL-STYLE SQUAD */}
-      <section className="players-section squad-section" id="players">
+      
+      {/* PLAYERS — KCC SQUAD */}
+      <section className="players-section" id="players">
         <div className="section-kicker">
           <span>03</span> THE KCC SQUAD
         </div>
 
-        <div className="squad-heading">
+        <div className="players-heading">
           <div>
-            <p className="section-overline">ONE CLUB. ONE SQUAD.</p>
+            <p className="section-overline">OUR CRICKET FAMILY</p>
             <h2>
               MEET THE<br />
               <span>SQUAD.</span>
             </h2>
           </div>
 
-          <div className="squad-heading-info">
+          <div className="squad-intro">
             <p>
-              The players who represent the spirit of Kummalloor Cricket Club.
-              Different strengths. One team.
+              Every player brings something to the game.
+              Get to know the people behind KCC.
             </p>
-            {!playersLoading && !playersError && (
-              <span className="squad-count">
-                {players.length} {players.length === 1 ? "PLAYER" : "PLAYERS"}
-              </span>
-            )}
+
+            <div className="squad-count">
+              <strong>{players.length.toString().padStart(2, "0")}</strong>
+              <span>SQUAD MEMBERS</span>
+            </div>
           </div>
         </div>
 
         {playersLoading ? (
-          <p className="players-state">Loading KCC squad...</p>
+          <p className="players-state">Loading squad...</p>
         ) : playersError ? (
           <p className="players-state players-error">{playersError}</p>
         ) : players.length === 0 ? (
           <p className="players-state">
-            The KCC squad will be announced here soon.
+            The KCC squad will be announced soon.
           </p>
         ) : (
-          <div className="squad-grid">
+          <div className="players-grid">
             {players.map((player, index) => {
               const name = player.name || "KCC Player";
 
@@ -364,18 +365,21 @@ function App() {
 
               return (
                 <article
-                  className="squad-card"
+                  className="player-card"
                   key={player.registrationId || name}
                 >
-                  <div className="squad-photo">
-                    <div className="squad-photo-placeholder">
-                      {initials}
-                    </div>
+                  <div className="player-card-header">
+                    <span>KCC</span>
+                    <span>SQUAD / {String(index + 1).padStart(2, "0")}</span>
+                  </div>
+
+                  <div className="player-photo">
+                    <span className="player-initials">{initials}</span>
 
                     {validPhoto && (
                       <img
                         src={`/players/photos/${encodeURIComponent(photoFile)}`}
-                        alt={`${name} - KCC squad player`}
+                        alt={`${name} - KCC player`}
                         loading="lazy"
                         onError={event => {
                           event.currentTarget.style.display = "none";
@@ -383,42 +387,32 @@ function App() {
                       />
                     )}
 
-                    <span className="squad-photo-label">
-                      KCC SQUAD
-                    </span>
-
-                    <span className="squad-index">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                    <span className="player-photo-watermark">KCC</span>
                   </div>
 
-                  <div className="squad-card-details">
-                    <span className="squad-role">
-                      {player.role || "PLAYER"}
+                  <div className="player-details">
+                    <span className="player-role">
+                      {player.role || "Player"}
                     </span>
 
                     <h3>{name}</h3>
 
-                    <div className="squad-player-info">
-                      {player.battingStyle && (
-                        <p>
-                          <span>BAT</span>
-                          {player.battingStyle}
-                        </p>
-                      )}
+                    <div className="player-info">
+                      <p>
+                        <span>BAT</span>
+                        {player.battingStyle || "Not specified"}
+                      </p>
 
-                      {player.bowlingStyle && (
-                        <p>
-                          <span>BOWL</span>
-                          {player.bowlingStyle}
-                        </p>
-                      )}
+                      <p>
+                        <span>BOWL</span>
+                        {player.bowlingStyle || "Not specified"}
+                      </p>
                     </div>
+                  </div>
 
-                    <div className="squad-card-footer">
-                      <span>KUMMALLOOR CRICKET CLUB</span>
-                      <span>KCC.</span>
-                    </div>
+                  <div className="player-card-footer">
+                    <span>KUMMALLOOR CRICKET CLUB</span>
+                    <span>2026</span>
                   </div>
                 </article>
               );
