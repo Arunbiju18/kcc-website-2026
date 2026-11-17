@@ -770,79 +770,100 @@ function App() {
         </div>
       </section>
 
-            {/* FAQ */}
-      <section className="faq-section" id="faq">
-        <div className="section-kicker">
-          <span>07</span> FREQUENTLY ASKED QUESTIONS
-        </div>
+            
+{/* FAQ */}
+<section className="faq-section" id="faq">
+  <div className="section-kicker">
+    <span>07</span> FREQUENTLY ASKED QUESTIONS
+  </div>
 
-        <div className="faq-heading">
-          <div>
-            <p className="section-overline">
-              EVERYTHING YOU NEED TO KNOW
-            </p>
-          </div>
+  <div className="faq-heading">
+    <div>
+      <p className="section-overline">
+        EVERYTHING YOU NEED TO KNOW
+      </p>
+    </div>
 
-          <p>
-            A few helpful answers about joining, playing
-            and being part of Kummalloor Cricket Club.
-          </p>
-        </div>
+    <p>
+      A few helpful answers about joining, playing
+      and being part of Kummalloor Cricket Club.
+    </p>
+  </div>
 
-        <div className="faq-grid">
-          <article className="faq-card">
-            <span className="faq-number">01 / MEMBERSHIP</span>
-            <h3>Who can join KCC?</h3>
-            <p>
-              Anyone who loves cricket can join as a player
-              or a cricket supporter.
-            </p>
-          </article>
+  <div className="faq-grid">
+    <details className="faq-card">
+      <summary>
+        <span className="faq-number">01 / MEMBERSHIP</span>
+        <h3>Who can join KCC?</h3>
+        <span className="faq-toggle">+</span>
+      </summary>
+      <p>
+        Anyone who loves cricket can join as a player
+        or a cricket supporter.
+      </p>
+    </details>
 
-          <article className="faq-card">
-            <span className="faq-number">02 / EXPERIENCE</span>
-            <h3>Do I need cricket experience?</h3>
-            <p>
-              No. All skill levels are welcome, and new players
-              are encouraged to join.
-            </p>
-          </article>
+    <details className="faq-card">
+      <summary>
+        <span className="faq-number">02 / EXPERIENCE</span>
+        <h3>Do I need cricket experience?</h3>
+        <span className="faq-toggle">+</span>
+      </summary>
+      <p>
+        No. All skill levels are welcome, and new players
+        are encouraged to join.
+      </p>
+    </details>
 
-          <article className="faq-card">
-            <span className="faq-number">03 / CONTRIBUTION</span>
-            <h3>What is the monthly contribution?</h3>
-            <p>
-              Active players contribute ₹100 per month.
-              Supporter contributions are voluntary.
-            </p>
-          </article>
+    <details className="faq-card">
+      <summary>
+        <span className="faq-number">03 / CONTRIBUTION</span>
+        <h3>What is the monthly contribution?</h3>
+        <span className="faq-toggle">+</span>
+      </summary>
+      <p>
+        Active players contribute ₹100 per month.
+        Supporter contributions are voluntary.
+      </p>
+    </details>
 
-          <article className="faq-card">
-            <span className="faq-number">04 / SUPPORTERS</span>
-            <h3>Can I join without playing?</h3>
-            <p>
-              Yes. Choose Cricket supporter in the registration
-              form to be part of KCC without playing.
-            </p>
-          </article>
+    <details className="faq-card">
+      <summary>
+        <span className="faq-number">04 / SUPPORTERS</span>
+        <h3>Can I join without playing?</h3>
+        <span className="faq-toggle">+</span>
+      </summary>
+      <p>
+        Yes. Choose Cricket supporter in the registration
+        form to be part of KCC without playing.
+      </p>
+    </details>
 
-          <article className="faq-card">
-            <span className="faq-number">05 / PRACTICE & MATCHES</span>
-            <h3>When and where are practices and matches?</h3>
-            <p>
-              Ground, practice timings and match updates are
-              shared through the KCC WhatsApp community.
-            </p>
-          </article>
+    <details className="faq-card">
+      <summary>
+        <span className="faq-number">05 / PRACTICE & MATCHES</span>
+        <h3>When and where are practices and matches?</h3>
+        <span className="faq-toggle">+</span>
+      </summary>
+      <p>
+        Ground, practice timings and match updates are
+        shared through the KCC WhatsApp community.
+      </p>
+    </details>
 
-          <article className="faq-card">
-            <span className="faq-number">06 / JERSEY</span>
-            <h3>Is the KCC jersey compulsory?</h3>
-            <p>
-              No. The jersey is optional and purchased separately.
-            </p>
-          </article>
-        </div>
+    <details className="faq-card">
+      <summary>
+        <span className="faq-number">06 / JERSEY</span>
+        <h3>Is the KCC jersey compulsory?</h3>
+        <span className="faq-toggle">+</span>
+      </summary>
+      <p>
+        No. The jersey is optional and purchased separately.
+      </p>
+    </details>
+  </div>
+</section>
+
       </section>
 
       {/* FINAL CALL TO ACTION */}
