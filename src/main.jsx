@@ -931,6 +931,7 @@ function App() {
         />
       </svg>
     </a>
+    </main>
   );
 }
 
