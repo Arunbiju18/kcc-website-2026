@@ -7,6 +7,11 @@ const WHATSAPP_GROUP_LINK =
   "https://chat.whatsapp.com/FVlr6rMUPeLIjE4H7MYfTx?s=cl&p=a&iam=2";
 
 function App() {
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+  }, []);
+
   const initialForm = {
     name: "",
     phone: "",
