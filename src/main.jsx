@@ -197,10 +197,7 @@ function App() {
             Kummalloor's own cricket club. A place to play,
             connect and grow, with all skill levels welcome.
           </p>
-
-        <span className="hero-side-label">
-  ONE CLUB. ONE COMMUNITY.
-</span>
+          
         </div>
 
         <div className="hero-bottom">
@@ -261,9 +258,6 @@ function App() {
 
         <div className="community-heading">
           <div>
-            <p className="section-overline">
-              DIFFERENT WAYS TO BELONG
-            </p>
 
             <h2>
   A PLACE TO<br />
@@ -453,15 +447,11 @@ function App() {
         </div>
 
         <div className="membership-grid">
-          <div className="membership-copy">
-            <p className="membership-tag">
-              OUR CLUB. OUR COMMUNITY.
-            </p>
-
-            <h2>
-              ONE CLUB.<br />
-              <span>ONE COMMUNITY.</span>
-            </h2>
+  <div className="membership-copy">
+    <h2>
+      OUR CLUB.<br />
+      <span>OUR COMMUNITY.</span>
+    </h2>
 
             <p className="membership-description">
               Whether you want to play cricket or support
@@ -472,7 +462,6 @@ function App() {
           <div className="price-card">
             <div className="price-card-top">
               <p>ACTIVE PLAYER CONTRIBUTION</p>
-              <span className="price-dot" />
             </div>
 
             <div className="price">
@@ -518,16 +507,11 @@ function App() {
         </div>
       </section>
 
-      {/* HOW TO JOIN */}
-      <section className="steps-section">
-        <div className="section-kicker">
-          <span>05</span> HOW TO JOIN
-        </div>
-
-        <h2>
-          THREE STEPS.<br />
-          <span>ONE COMMUNITY.</span>
-        </h2>
+    {/* HOW TO JOIN */}
+<section className="steps-section">
+  <div className="section-kicker">
+    <span>05</span> HOW TO JOIN
+  </div>
 
         <div className="steps-grid">
           <div className="step-item">
@@ -578,9 +562,9 @@ function App() {
             </p>
 
             <h2>
-              YOUR<br />
-              <span>CLUB.</span><br />
-              YOUR GAME.
+              ONE<br />
+              <span>GAME.</span><br />
+              ONE FAMILY.
             </h2>
 
             <p>
@@ -781,7 +765,6 @@ function App() {
         </div>
       </section>
 
-      {/* FAQ */}
             {/* FAQ */}
       <section className="faq-section" id="faq">
         <div className="section-kicker">
@@ -793,11 +776,6 @@ function App() {
             <p className="section-overline">
               EVERYTHING YOU NEED TO KNOW
             </p>
-
-            <h2>
-              GOOD TO<br />
-              <span>KNOW.</span>
-            </h2>
           </div>
 
           <p>
