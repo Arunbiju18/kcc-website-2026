@@ -2058,3 +2058,167 @@ button {
     letter-spacing: 2px;
   }
 }
+/* =====================================
+   KCC WEBSITE CONTENT REFINEMENTS
+===================================== */
+
+/* Keep exactly one visible JOIN KCC button
+   in the header on desktop and mobile */
+
+@media (max-width: 650px) {
+  .nav {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .nav-join {
+    display: inline-flex;
+    min-height: 39px;
+    padding: 0 12px;
+    margin-left: auto;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    flex: 0 0 40px;
+  }
+
+  .mobile-nav-join {
+    display: none !important;
+  }
+}
+
+/* Hero without a registration button */
+
+.hero-actions {
+  display: none;
+}
+
+/* FAQ layout */
+
+.faq-section {
+  padding: 105px 7%;
+  background: #0c110e;
+}
+
+.faq-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1180px;
+  margin: 25px auto 45px;
+}
+
+.faq-heading h2 {
+  margin: 15px 0 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(42px, 5vw, 62px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.04;
+}
+
+.faq-heading h2 span {
+  color: var(--green);
+}
+
+.faq-heading > p {
+  max-width: 390px;
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1180px;
+  margin: auto;
+}
+
+.faq-card {
+  min-height: 190px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: linear-gradient(145deg, #151d18, #0e1310);
+  transition: border-color .25s ease, transform .25s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(185,243,107,.4);
+}
+
+.faq-number {
+  display: block;
+  margin-bottom: 24px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.faq-card h3 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.faq-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Mobile FAQ */
+
+@media (max-width: 900px) {
+  .faq-section {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+}
+
+@media (max-width: 650px) {
+  .faq-section {
+    padding: 75px 22px;
+  }
+
+  .faq-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .faq-heading h2 {
+    font-size: 42px;
+    letter-spacing: -1.8px;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .faq-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .faq-number {
+    margin-bottom: 17px;
+  }
+
+  .faq-card h3 {
+    font-size: 18px;
+  }
+}
