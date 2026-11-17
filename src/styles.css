@@ -2222,3 +2222,42 @@ button {
     font-size: 18px;
   }
 }
+
+/* =====================================
+   KCC FINAL SPACING REFINEMENTS
+===================================== */
+
+/* HOW TO JOIN — heading was removed */
+.steps-grid {
+  margin-top: 35px;
+}
+
+@media (max-width: 650px) {
+  .steps-grid {
+    margin-top: 25px;
+  }
+}
+
+/* FAQ — heading was removed */
+.faq-heading {
+  margin: 0 auto 30px;
+}
+
+@media (max-width: 650px) {
+  .faq-heading {
+    margin: 0 0 22px;
+  }
+}
+
+/* SQUAD — remove unnecessary mobile gap */
+@media (max-width: 650px) {
+  .squad-intro {
+    margin-top: 0;
+  }
+}
+
+/* FOOTER — privacy information */
+.footer-privacy {
+  font-size: 11px;
+  line-height: 1.5;
+}
