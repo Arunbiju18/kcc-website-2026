@@ -917,7 +917,8 @@ function App() {
         </p>
       </footer>
 
-        </main>
+             </footer>
+    </main>
 
     <a
       href="https://chat.whatsapp.com/FVlr6rMUPeLIjE4H7MYfTx"
