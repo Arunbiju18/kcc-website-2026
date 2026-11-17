@@ -2222,104 +2222,47 @@ button {
     font-size: 18px;
   }
 }
+
 /* =========================================
-   KCC — CONSOLIDATED SPACING SYSTEM
+   KCC — VISUAL ALIGNMENT FIXES
 ========================================= */
 
-/* Desktop and tablet */
-@media (min-width: 651px) {
-  .intro-section,
-  .community-section,
-  .membership-section,
-  .steps-section,
-  .join-section,
-  .players-section,
-  .faq-section {
-    padding-top: 75px;
-    padding-bottom: 75px;
-  }
-
-  .community-heading {
-    margin-bottom: 30px;
-  }
-
-  .players-heading {
-    margin: 0 auto;
-  }
-
-  .players-grid {
-    margin-top: 30px;
-  }
-
-  .steps-grid {
-    margin-top: 35px;
-  }
-
-  .faq-heading {
-    margin: 0 auto 30px;
-  }
-
-  .membership-grid {
-    gap: 45px;
-  }
-
-  .closing-section {
-    padding-top: 75px;
-    padding-bottom: 75px;
-  }
+/* Align section labels with the content */
+.section-kicker,
+.community-heading {
+  max-width: 1180px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* Mobile */
-@media (max-width: 650px) {
-  .intro-section,
-  .community-section,
-  .membership-section,
-  .steps-section,
-  .join-section,
-  .players-section,
-  .faq-section {
-    padding-top: 55px;
-    padding-bottom: 55px;
-  }
-
-  .community-heading {
-    margin-bottom: 24px;
-  }
-
-  .players-heading {
-    margin: 0;
-  }
-
-  .squad-intro {
-    margin-top: 0;
-  }
-
-  .players-grid {
-    margin-top: 22px;
-  }
-
-  .steps-grid {
-    margin-top: 22px;
-  }
-
-  .faq-heading {
-    margin: 0 0 20px;
-  }
-
-  .membership-grid,
-  .intro-grid,
-  .join-grid {
-    gap: 22px;
-  }
-
-  .closing-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
+/* Improve paragraph readability */
+.community-heading > p,
+.squad-intro > p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
 }
 
-/* Footer privacy note */
+/* Footer text */
+.footer-location,
 .footer-privacy {
-  font-size: 11px;
-  line-height: 1.5;
+  color: #7d897f;
+}
+
+/* Align squad card footers */
+.player-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-details {
+  flex: 1;
+}
+
+/* Mobile hero ball positioning */
+@media (max-width: 650px) {
+  .stadium-ball {
+    top: 72%;
+  }
 }
