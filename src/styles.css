@@ -2266,3 +2266,81 @@ button {
     top: 72%;
   }
 }
+
+/* =========================================
+   KCC — SPACING & ALIGNMENT REFINEMENTS
+   No content, typography or colour changes
+========================================= */
+
+/* Membership section alignment */
+.membership-grid {
+  align-items: start;
+  margin-top: 28px;
+}
+
+.membership-copy h2 {
+  margin-top: 15px;
+}
+
+/* Consistent heading spacing */
+.players-heading h2 {
+  margin-top: 20px;
+}
+
+.community-section h2 {
+  margin-top: 43px;
+}
+
+/* FAQ heading alignment */
+.faq-heading {
+  align-items: start;
+}
+
+.faq-heading > p {
+  margin-top: 11px;
+}
+
+/* FAQ card height */
+.faq-card {
+  min-height: 0;
+}
+
+/* Hero badge spacing */
+.hero-label {
+  margin-bottom: 22px;
+}
+
+/* Tablet layout */
+@media (min-width: 651px) and (max-width: 900px) {
+  .closing-section,
+  .footer {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .benefit-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile refinements */
+@media (max-width: 650px) {
+  .nav,
+  .closing-section {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .hero-label {
+    margin-bottom: 18px;
+  }
+
+  .players-grid,
+  .steps-grid {
+    margin-top: 24px;
+  }
+
+  .faq-heading {
+    margin-bottom: 24px;
+  }
+}
