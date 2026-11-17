@@ -1986,3 +1986,50 @@ button {
     transform: none;
   }
 }
+.faq-card {
+  cursor: pointer;
+}
+
+.faq-card summary {
+  list-style: none;
+  position: relative;
+  cursor: pointer;
+  padding-right: 35px;
+}
+
+.faq-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-card summary h3 {
+  margin-bottom: 0;
+}
+
+.faq-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  transition: transform 0.25s ease;
+}
+
+.faq-card[open] .faq-toggle {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-card > p {
+  margin-top: 18px;
+  animation: faqReveal 0.25s ease;
+}
+
+@keyframes faqReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
