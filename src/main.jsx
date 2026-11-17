@@ -916,8 +916,6 @@ function App() {
           communication.
         </p>
       </footer>
-
-             </footer>
     </main>
 
     <a
