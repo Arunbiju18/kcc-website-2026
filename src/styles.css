@@ -2267,72 +2267,105 @@ button {
   }
 }
 
+
 /* =========================================
-   KCC — SPACING & ALIGNMENT REFINEMENTS
-   No content, typography or colour changes
+   KCC — CONSOLIDATED SPACING CLEANUP
 ========================================= */
 
-/* Membership section alignment */
+/* Consistent section padding */
+.intro-section,
+.community-section,
+.membership-section,
+.steps-section,
+.join-section,
+.players-section,
+.faq-section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.closing-section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+/* Community */
+.community-heading {
+  margin-bottom: 28px;
+}
+
+/* Membership */
 .membership-grid {
   align-items: start;
   margin-top: 28px;
 }
 
-.membership-copy h2 {
+/* How to join */
+.steps-grid {
+  margin-top: 32px;
+}
+
+/* Squad */
+.players-heading {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.players-heading h2 {
   margin-top: 15px;
 }
 
-/* Consistent heading spacing */
-.players-heading h2 {
-  margin-top: 20px;
+.players-grid {
+  margin-top: 0;
 }
 
-.community-section h2 {
-  margin-top: 43px;
-}
-
-/* FAQ heading alignment */
+/* FAQ */
 .faq-heading {
+  margin-top: 12px;
+  margin-bottom: 24px;
   align-items: start;
 }
 
 .faq-heading > p {
-  margin-top: 11px;
+  margin-top: 0;
 }
 
-/* FAQ card height */
 .faq-card {
   min-height: 0;
 }
 
-/* Hero badge spacing */
-.hero-label {
-  margin-bottom: 22px;
-}
-
-/* Tablet layout */
+/* Tablet */
 @media (min-width: 651px) and (max-width: 900px) {
-  .closing-section,
-  .footer {
-    padding-right: 5%;
-    padding-left: 5%;
-  }
-
   .benefit-card:last-child:nth-child(odd) {
     grid-column: 1 / -1;
   }
 }
 
-/* Mobile refinements */
+/* Mobile */
 @media (max-width: 650px) {
-  .nav,
-  .closing-section {
-    padding-right: 22px;
-    padding-left: 22px;
+  .intro-section,
+  .community-section,
+  .membership-section,
+  .steps-section,
+  .join-section,
+  .players-section,
+  .faq-section {
+    padding-top: 55px;
+    padding-bottom: 55px;
   }
 
-  .hero-label {
-    margin-bottom: 18px;
+  .closing-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .community-heading {
+    margin-bottom: 22px;
+  }
+
+  .players-heading {
+    margin-top: 0;
+    margin-bottom: 22px;
   }
 
   .players-grid,
@@ -2341,6 +2374,7 @@ button {
   }
 
   .faq-heading {
-    margin-bottom: 24px;
+    margin-top: 0;
+    margin-bottom: 22px;
   }
 }
