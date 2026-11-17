@@ -914,12 +914,11 @@ function App() {
           Information submitted through this website is used
           by the KCC team for membership processing and club
           communication.
-        </p>
+                </p>
       </footer>
-    </main>
 
     <a
-      href="https://chat.whatsapp.com/FVlr6rMUPeLIjE4H7MYfTx"
+      href={WHATSAPP_GROUP_LINK}
       className="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"
