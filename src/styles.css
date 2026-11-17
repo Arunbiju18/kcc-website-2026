@@ -2222,51 +2222,11 @@ button {
     font-size: 18px;
   }
 }
+/* =========================================
+   KCC — CONSOLIDATED SPACING SYSTEM
+========================================= */
 
-/* =====================================
-   KCC FINAL SPACING REFINEMENTS
-===================================== */
-
-/* HOW TO JOIN — heading was removed */
-.steps-grid {
-  margin-top: 35px;
-}
-
-@media (max-width: 650px) {
-  .steps-grid {
-    margin-top: 25px;
-  }
-}
-
-/* FAQ — heading was removed */
-.faq-heading {
-  margin: 0 auto 30px;
-}
-
-@media (max-width: 650px) {
-  .faq-heading {
-    margin: 0 0 22px;
-  }
-}
-
-/* SQUAD — remove unnecessary mobile gap */
-@media (max-width: 650px) {
-  .squad-intro {
-    margin-top: 0;
-  }
-}
-
-/* FOOTER — privacy information */
-.footer-privacy {
-  font-size: 11px;
-  line-height: 1.5;
-}
-
-/* =====================================
-   KCC CONTROLLED SPACING CORRECTIONS
-===================================== */
-
-/* Desktop section spacing */
+/* Desktop and tablet */
 @media (min-width: 651px) {
   .intro-section,
   .community-section,
@@ -2275,30 +2235,41 @@ button {
   .join-section,
   .players-section,
   .faq-section {
-    padding-top: 85px;
-    padding-bottom: 85px;
+    padding-top: 75px;
+    padding-bottom: 75px;
   }
 
   .community-heading {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 
   .players-heading {
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin: 0 auto;
   }
 
   .players-grid {
     margin-top: 30px;
   }
 
+  .steps-grid {
+    margin-top: 35px;
+  }
+
   .faq-heading {
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
+  }
+
+  .membership-grid {
+    gap: 45px;
+  }
+
+  .closing-section {
+    padding-top: 75px;
+    padding-bottom: 75px;
   }
 }
 
-/* Mobile section spacing */
+/* Mobile */
 @media (max-width: 650px) {
   .intro-section,
   .community-section,
@@ -2307,21 +2278,24 @@ button {
   .join-section,
   .players-section,
   .faq-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 55px;
+    padding-bottom: 55px;
   }
 
   .community-heading {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
   }
 
   .players-heading {
+    margin: 0;
+  }
+
+  .squad-intro {
     margin-top: 0;
-    margin-bottom: 22px;
   }
 
   .players-grid {
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .steps-grid {
@@ -2329,8 +2303,7 @@ button {
   }
 
   .faq-heading {
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
   }
 
   .membership-grid,
@@ -2338,4 +2311,15 @@ button {
   .join-grid {
     gap: 22px;
   }
+
+  .closing-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Footer privacy note */
+.footer-privacy {
+  font-size: 11px;
+  line-height: 1.5;
 }
