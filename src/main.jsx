@@ -863,9 +863,6 @@ function App() {
     </details>
   </div>
 </section>
-
-      </section>
-
       {/* FINAL CALL TO ACTION */}
       <section className="closing-section">
         <p>THE GAME IS BETTER TOGETHER.</p>
