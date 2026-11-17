@@ -2261,3 +2261,81 @@ button {
   font-size: 11px;
   line-height: 1.5;
 }
+
+/* =====================================
+   KCC CONTROLLED SPACING CORRECTIONS
+===================================== */
+
+/* Desktop section spacing */
+@media (min-width: 651px) {
+  .intro-section,
+  .community-section,
+  .membership-section,
+  .steps-section,
+  .join-section,
+  .players-section,
+  .faq-section {
+    padding-top: 85px;
+    padding-bottom: 85px;
+  }
+
+  .community-heading {
+    margin-bottom: 35px;
+  }
+
+  .players-heading {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+
+  .players-grid {
+    margin-top: 30px;
+  }
+
+  .faq-heading {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+/* Mobile section spacing */
+@media (max-width: 650px) {
+  .intro-section,
+  .community-section,
+  .membership-section,
+  .steps-section,
+  .join-section,
+  .players-section,
+  .faq-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .community-heading {
+    margin-bottom: 25px;
+  }
+
+  .players-heading {
+    margin-top: 0;
+    margin-bottom: 22px;
+  }
+
+  .players-grid {
+    margin-top: 25px;
+  }
+
+  .steps-grid {
+    margin-top: 22px;
+  }
+
+  .faq-heading {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .membership-grid,
+  .intro-grid,
+  .join-grid {
+    gap: 22px;
+  }
+}
