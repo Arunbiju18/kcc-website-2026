@@ -137,13 +137,7 @@ function App() {
           <a href="#membership" onClick={closeMenu}>MEMBERSHIP</a>
           <a href="#players" onClick={closeMenu}>SQUAD</a>
 
-          <a
-            href="#join"
-            onClick={closeMenu}
-            className="mobile-nav-join"
-          >
-            JOIN KCC ↗
-          </a>
+         
         </div>
 
         <a className="nav-join" href="#join">
@@ -204,16 +198,14 @@ function App() {
             connect and grow, with all skill levels welcome.
           </p>
 
-          <div className="hero-actions">
-            <a href="#join" className="primary">
-              JOIN KCC <span>↗</span>
-            </a>
-          </div>
+        <span className="hero-side-label">
+  ONE CLUB. ONE COMMUNITY.
+</span>
         </div>
 
         <div className="hero-bottom">
           <span className="hero-side-label">
-            ONE CLUB. ONE COMMUNITY.
+            OUR CLUB. OUR COMMUNITY.
           </span>
 
           <span className="hero-side-label">
@@ -274,9 +266,9 @@ function App() {
             </p>
 
             <h2>
-              ONE COMMUNITY.<br />
-              <span>DIFFERENT WAYS TO BELONG.</span>
-            </h2>
+  A PLACE TO<br />
+  <span>BELONG.</span>
+</h2>
           </div>
 
           <p>
@@ -522,9 +514,6 @@ function App() {
               No joining fee. Jersey is optional and purchased separately.
             </p>
 
-            <a href="#join" className="primary full-width">
-              JOIN KCC ↗
-            </a>
           </div>
         </div>
       </section>
@@ -793,71 +782,83 @@ function App() {
       </section>
 
       {/* FAQ */}
+            {/* FAQ */}
       <section className="faq-section" id="faq">
         <div className="section-kicker">
           <span>07</span> FREQUENTLY ASKED QUESTIONS
         </div>
 
         <div className="faq-heading">
-          <p className="section-overline">
-            NEED TO KNOW MORE?
-          </p>
+          <div>
+            <p className="section-overline">
+              EVERYTHING YOU NEED TO KNOW
+            </p>
 
-          <h2>
-            GOOD TO<br />
-            <span>KNOW.</span>
-          </h2>
+            <h2>
+              GOOD TO<br />
+              <span>KNOW.</span>
+            </h2>
+          </div>
+
+          <p>
+            A few helpful answers about joining, playing
+            and being part of Kummalloor Cricket Club.
+          </p>
         </div>
 
-        <div className="faq-list">
-
-          <details className="faq-item">
-            <summary>Who can join KCC?</summary>
+        <div className="faq-grid">
+          <article className="faq-card">
+            <span className="faq-number">01 / MEMBERSHIP</span>
+            <h3>Who can join KCC?</h3>
             <p>
               Anyone who loves cricket can join as a player
               or a cricket supporter.
             </p>
-          </details>
+          </article>
 
-          <details className="faq-item">
-            <summary>Do I need cricket experience?</summary>
+          <article className="faq-card">
+            <span className="faq-number">02 / EXPERIENCE</span>
+            <h3>Do I need cricket experience?</h3>
             <p>
               No. All skill levels are welcome, and new players
               are encouraged to join.
             </p>
-          </details>
+          </article>
 
-          <details className="faq-item">
-            <summary>What is the monthly contribution?</summary>
+          <article className="faq-card">
+            <span className="faq-number">03 / CONTRIBUTION</span>
+            <h3>What is the monthly contribution?</h3>
             <p>
               Active players contribute ₹100 per month.
               Supporter contributions are voluntary.
             </p>
-          </details>
+          </article>
 
-          <details className="faq-item">
-            <summary>Can I join without playing?</summary>
+          <article className="faq-card">
+            <span className="faq-number">04 / SUPPORTERS</span>
+            <h3>Can I join without playing?</h3>
             <p>
               Yes. Choose Cricket supporter in the registration
-              form to be part of the KCC community without playing.
+              form to be part of KCC without playing.
             </p>
-          </details>
+          </article>
 
-          <details className="faq-item">
-            <summary>When and where are practices and matches?</summary>
+          <article className="faq-card">
+            <span className="faq-number">05 / PRACTICE & MATCHES</span>
+            <h3>When and where are practices and matches?</h3>
             <p>
               Ground, practice timings and match updates are
               shared through the KCC WhatsApp community.
             </p>
-          </details>
+          </article>
 
-          <details className="faq-item">
-            <summary>Is the KCC jersey compulsory?</summary>
+          <article className="faq-card">
+            <span className="faq-number">06 / JERSEY</span>
+            <h3>Is the KCC jersey compulsory?</h3>
             <p>
               No. The jersey is optional and purchased separately.
             </p>
-          </details>
-
+          </article>
         </div>
       </section>
 
